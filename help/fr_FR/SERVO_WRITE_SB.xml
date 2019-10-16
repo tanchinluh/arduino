@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="SERVO_WRITE_SB"> 
+<refnamediv>
+  <refname>SERVO_WRITE_SB</refname>
+  <refpurpose>pilote un servomoteur en spécifiant l'angle de 0 à 180° souhaité</refpurpose> 
+</refnamediv>
+<refsection>
+  <title>Aperçu</title>
+    <para>
+       <inlinemediaobject>
+          <imageobject>
+             <imagedata fileref="../../images/gif/SERVO_WRITE_SB.gif" align="center" valign="middle"/>
+          </imageobject>
+       </inlinemediaobject>
+    </para>
+</refsection>
+<refsection id="Contents_SERVO_WRITE_SB">
+  <title>Contenu</title>
+  <itemizedlist>
+	<listitem>
+	  <para>
+		<xref linkend="Palette_SERVO_WRITE_SB">Palette</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Description_SERVO_WRITE_SB">Description</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Dialogbox_SERVO_WRITE_SB">Paramètres</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Example1_SERVO_WRITE_SB">Exemple 1</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Seealso_SERVO_WRITE_SB">Voir aussi</xref>
+	  </para>
+	</listitem>
+  </itemizedlist>
+</refsection>  
+<refsection id="Palette_SERVO_WRITE_SB">
+  <title>Palette</title>
+Arduino
+</refsection>
+<refsection id="Description_SERVO_WRITE_SB">
+  <title>Description</title>
+<para> Un servomoteur est un ensemble constitué d'un moteur électrique, d'un réducteur, d'un potentiomètre et d'une partie électronique analogique ou numérique pour la commande. C'est donc un asservissement de position (ou de vitesse pour les servomoteurs à rotation continue). </para>
+<para> L'utilisateur ne doit donc qu'envoyer la consigne de position ou de vitesse souhaitée. Cette consigne est transmise au servomoteur sous forme d'impulsions espacées de 10 à 20 ms. Le codage de ces impulsions est fait de telle façon qu'une impulsion de 1,5 ms correspond à la position centrée (de repos), une impulsion de 1 ms correspond à un angle de 90° dans le sens trigonométrique et enfin une impulsion de 2 ms correspond à un angle de 90° dans le sens horaire. Toutes les autres largeurs d'impulsion donneront des valeurs intermédiaires. </para>
+<para> Pour un servomoteur à rotation continue, la largeur des impulsions donne la vitesse de rotation ainsi que le sens. </para>
+<para> Il faut penser à utiliser un régulateur de tension plutôt que l'alimentation de la carte Arduino pour alimenter le servomoteur. </para>
+<para> Pour simplifier, le bloc ne demande en entrée que l'angle souhaité en degré de 0 à 180. </para>
+<para> Deux servomoteurs peuvent être pilotés avec la toolbox. </para>
+
+<para> On rappelle que l'échantillonnage est de 10 ms au minimum pour ce bloc. </para>
+
+</refsection>
+<refsection id="Dialogbox_SERVO_WRITE_SB">
+  <title>Paramètres</title>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/SERVO_SB_dialogbox.png" align="center"/> </imageobject> </inlinemediaobject>
+<para> Le bloc propose de choisir le numéro du servomoteur piloté. </para>
+<para> Le numéro de la carte ne peut pas être modifié pour l'instant. </para>
+
+</refsection>
+<refsection id="Example1_SERVO_WRITE_SB">
+  <title>Exemple 1</title>
+<para> L'exemple ci-dessous montre l'utilisation du bloc servomoteur dont la position est donnée par un potentiomètre relié sur le port analogique 0. </para>
+<para> Un gain d'adaptation a été utilisé pour convertir les données numériques codées sur 10 bits en sortie du potentiomètre en une grandeur variant de 0 à 180 pour spécifier la position souhaitée du servomoteur. </para>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/SERVO_SB_exemple.png" align="center"/> </imageobject> </inlinemediaobject>
+
+</refsection>
+<refsection id="Seealso_SERVO_WRITE_SB" role="see also">
+  <title>Voir aussi</title>
+      <simplelist>
+		<member>
+        <link linkend="DCMOTOR_SB">DCMOTOR_SB</link>
+		</member>
+	</simplelist>
+</refsection>
+</refentry>

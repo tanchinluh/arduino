@@ -1,0 +1,109 @@
+// Copyright (C) 2012 - Scilab Enterprises
+
+// This file is released under the 3-clause BSD license. See COPYING-BSD.
+
+function arduinolib = startModule()
+
+    etc_tlbx  = get_absolute_file_path("arduino.start");
+    etc_tlbx  = getshortpathname(etc_tlbx);
+    root_tlbx = strncpy( etc_tlbx, length(etc_tlbx)-length("\etc\") );
+    // Get the Arduino version
+    fd = mopen(root_tlbx+filesep()+"VERSION");
+    version=mgetl(fd,-1);
+    mclose(fd);
+
+    mprintf("Start Arduino %s\n", version)
+
+    if isdef("arduinolib") then
+        warning("Arduino toolbox library is already loaded");
+        return;
+    end
+
+    //  if win64() then
+    //    warning("Arduino toolbox library is only available for scilab 32 bits");
+    //    return;
+    //  end
+
+    // check minimal version (xcosPal required)
+    // =============================================================================
+    if ~isdef('xcosPal') then
+        // and xcos features required
+        error(gettext('Scilab 5.3.2 or more is required.'));
+    end
+
+    // Load functions library
+    // =============================================================================
+    mprintf("\tLoad macros\n");
+    pathmacros = pathconvert( root_tlbx ) + "macros" + filesep();
+    arduinolib = lib(pathmacros);
+
+    // Load and add help chapter
+    // =============================================================================
+    if or(getscilabmode() == ["NW";"STD"]) then
+        mprintf("\tLoad help\n");
+        path_addchapter = pathconvert(root_tlbx+"/jar");
+        if ( isdir(path_addchapter) <> [] ) then
+            add_help_chapter("Arduino", path_addchapter, %F);
+        end
+    end
+
+    // Load serial dll and link
+    // =============================================================================
+    //if getos() == "Windows"
+        mprintf("\tLoad gateways\n");
+        exec(pathconvert(root_tlbx+"/sci_gateway/loader_gateway.sce",%f));
+
+        //mprintf("\tLoad serial dll\n");
+        //pathdll = pathconvert( root_tlbx ) + "src/c" + filesep();
+        //chdir(pathdll)
+        //exec('loader.sce');
+        //chdir('..')
+    //end
+
+    // force to load some libraries (dependencies)
+    // =============================================================================
+    loadScicos();
+    loadXcosLibs();
+
+    // Add blocks to the Xcos palette
+    // =============================================================================
+    mprintf("\tLoad palette\n");
+    pal = xcosPal("Arduino");
+
+    sous_pal=["Configuration" "Digital" "Analog" "Motors"]
+
+    sous_blocks=list(..
+        ["ARDUINO_SETUP" "TIME_SAMPLE" "ARDUINO_SCOPE"], ..
+        ["DIGITAL_READ_SB" "DIGITAL_WRITE_SB" "ENCODER_SB" "INTERRUPT_SB"], ..
+        ["ANALOG_READ_SB" "ANALOG_WRITE_SB" ], ..
+        ["DCMOTOR_SB" "SERVO_WRITE_SB" ]);
+
+    for p = 1:size(sous_pal,2)
+        local_pal = xcosPal(sous_pal(p));
+        blocks=sous_blocks(p);
+        for i=1:size(blocks, "*")
+            h5  = ls(root_tlbx + "/images/h5/"  + blocks(i) + "." + ["sod" "h5"]);
+            gif = ls(root_tlbx + "/images/gif/" + blocks(i) + "." + ["png" "jpg" "gif"]);
+            svg = ls(root_tlbx + "/images/svg/" + blocks(i) + "." + ["png" "jpg" "gif" "svg"]);
+            local_pal = xcosPalAddBlock(local_pal, h5(1), gif(1), svg(1));
+        end
+        if ~xcosPalAdd(local_pal, "Arduino") then
+            error(msprintf(gettext("%s: Unable to export %s.\n"), "arduino.start", "pal"));
+        end
+    end
+
+    // Load demos
+    // =============================================================================
+    if or(getscilabmode() == ["NW";"STD"]) then
+        mprintf("\tLoad demos\n");
+        pathdemos = pathconvert(root_tlbx+"/demos/arduino.dem.gateway.sce", %F, %T);
+        add_demo("Arduino", pathdemos);
+    end
+
+endfunction
+
+if with_module('xcos') then
+    arduinolib = startModule();
+    clear startModule; // remove startModule on stack
+end
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="DIGITAL_READ_SB"> 
+<refnamediv>
+  <refname>DIGITAL_READ_SB</refname>
+  <refpurpose>Lit une valeur logique 0 ou 1 sur une carte Arduino donnée</refpurpose> 
+</refnamediv>
+<refsection>
+  <title>Aperçu</title>
+    <para>
+       <inlinemediaobject>
+          <imageobject>
+             <imagedata fileref="../../images/gif/DIGITAL_READ_SB.gif" align="center" valign="middle"/>
+          </imageobject>
+       </inlinemediaobject>
+    </para>
+</refsection>
+<refsection id="Contents_DIGITAL_READ_SB">
+  <title>Contenu</title>
+  <itemizedlist>
+        <listitem>
+          <para>
+            <xref linkend="Palette_DIGITAL_READ_SB">Palette</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Description_DIGITAL_READ_SB">Description</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Dialogbox_DIGITAL_READ_SB">Paramètres</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Example1_DIGITAL_READ_SB">Exemple 1</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Seealso_DIGITAL_READ_SB">Voir aussi</xref>
+          </para>
+        </listitem>
+  </itemizedlist>
+</refsection>  
+<refsection id="Palette_DIGITAL_READ_SB">
+  <title>Palette</title>
+Arduino
+</refsection>
+<refsection id="Description_DIGITAL_READ_SB">
+  <title>Description</title>
+<para> Les carte Arduino possède un ensemble de ports logiques (digital) qui sont utilisés pour l'écriture ou la lecture de données issues d'un composant. </para>
+<para> Pour une carte UNO, les ports de 2 à 13 sont disponibles (0 et 1 sont utilisés pour la transmission série). Pour une carte MEGA, les ports 2 à 53 sont disponibles. Le port prend le niveau logique bas (0) ou le niveau logique haut (1) qui correspond à la tension de référence. </para>
+<para> On rappelle que l'échantillonnage est de 8 ms au minimum pour ce bloc. </para>
+
+</refsection>
+<refsection id="Dialogbox_DIGITAL_READ_SB">
+  <title>Paramètres</title>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/DIGITAL_READ_SB_dialogbox.png" align="center"/> </imageobject> </inlinemediaobject>
+<para> Le numéro du port digital est compris entre 2 et 53, à choisir en fonction de sa carte Arduino. </para>
+<para> Le numéro de la carte ne peut pas être modifié pour l'instant. </para>
+
+</refsection>
+<refsection id="Example1_DIGITAL_READ_SB">
+  <title>Exemple 1</title>
+<para> L'exemple ci-dessous montre l'utilisation du bloc dans le cas d'un montage constitué d'un interrupteur dont une broche est reliée au port digital 7 et une LED reliée au port digital 10. Un appui sur le bouton entraîne l'allumage de la LED. </para>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/DIGITAL_exemple.png" align="center"/> </imageobject> </inlinemediaobject>
+
+</refsection>
+<refsection id="Seealso_DIGITAL_READ_SB" role="see also">
+  <title>Voir aussi</title>
+      <simplelist>
+		<member>
+        <link linkend="ANALOG_READ_SB">ANALOG_READ_SB</link>
+        </member>
+		<member>
+        <link linkend="ANALOG_WRITE_SB">ANALOG_WRITE_SB</link>
+        </member>
+		<member>
+        <link linkend="DIGITAL_WRITE_SB">DIGITAL_WRITE_SB</link>
+        </member>
+	</simplelist>
+</refsection>
+</refentry>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<mxStylesheet>
+    <!-- *** OVERLOADING DEFINITION *** -->
+    <add as="defaultVertex">
+        <add as="shape" value="label"/>
+        <add as="perimeter" value="rectanglePerimeter"/>
+        <add as="strokeColor" value="black"/>
+        <add as="strokeWidth" value="0.5"/>
+        <add as="fillColor" value="white"/>
+        <add as="fontColor" value="black"/>
+        <add as="noLabel" value="1"/>
+    </add>
+    <add as="blockWithLabel" extend="defaultVertex">
+        <add as="noLabel" value="0"/>
+        <add as="spacing" value="13"/>
+        <add as="fillColor" value="#cdcdcd"/>
+        <add as="gradientColor" value="white"/>
+        <add as="rounded" value="1"/>
+    </add>
+    <!-- *** BLOCK DEFINITION *** -->
+    <!-- Label -->
+    <add as="Label" extend="defaultVertex">
+        <add as="shape" value="rectangle"/>
+        <add as="perimeter" value="rectanglePerimeter"/>
+        <add as="fillColor" value="white"/>
+        <add as="fontColor" value="black"/>
+        <add as="noLabel" value="0"/>
+        <add as="strokeColor" value="white"/>
+    </add>
+    <!-- USER-DEFINED FUNCTIONS -->
+    <add as="TIME_SAMPLE" extend="blockWithLabel">
+        <add as="displayedLabel" value="Duration : 10&lt;br&gt;Sampling period : 0.1"/>
+    </add>
+
+    <add as="ARDUINO_SETUP" extend="blockWithLabel">
+        <add as="displayedLabel" value="Board %s&lt;br&gt;on com %s"/>
+        <add as="verticalLabelPosition" value="bottom"/>
+        <add as="verticalAlign" value="top"/>
+        <add as="align" value="center"/>
+        <add as="spacing" value="-3"/>
+    </add>
+    <add as="DIGITAL_READ_SB" extend="blockWithLabel">
+        <add as="displayedLabel" value="Digital Read&lt;br&gt;Pin %s on board %s"/>
+        <add as="verticalLabelPosition" value="bottom"/>
+        <add as="verticalAlign" value="top"/>
+        <add as="align" value="center"/>
+        <add as="spacing" value="-2"/>
+    </add>
+    <add as="DIGITAL_WRITE_SB" extend="blockWithLabel">
+        <add as="displayedLabel" value="Digital Write&lt;br&gt;Pin %s on board %s"/>
+        <add as="verticalLabelPosition" value="bottom"/>
+        <add as="verticalAlign" value="top"/>
+        <add as="align" value="center"/>
+        <add as="spacing" value="-2"/>
+    </add>
+    <!--
+    style = "ENCODER_SB;blockWithLabel;"+..
+            "verticalLabelPosition=bottom;verticalAlign=top;spacing=-2;align=center;"+..
+            "displayedLabel=Encoder<br>on board %s"
+
+    style = "INTERRUPT_SB;blockWithLabel;"+..
+            "verticalLabelPosition=bottom;verticalAlign=top;spacing=-2;align=center;"+..
+            "displayedLabel=Interrupt<br>on pin %s on board %s"
+
+    style = "ANALOG_WRITE_SB;blockWithLabel;"+..
+            "verticalLabelPosition=bottom;verticalAlign=top;spacing=-2;align=center;"+..
+            "displayedLabel=Analog WRITE<br>Pin %s on board %s"
+    style = "ANALOG_READ_SB;blockWithLabel;"+..
+            "verticalLabelPosition=bottom;verticalAlign=top;spacing=-2;align=center;"+..
+            "displayedLabel=Analog READ<br>Pin %s on board %s"
+    style = "DCMOTOR_SB;blockWithLabel;"+..
+            "verticalLabelPosition=bottom;verticalAlign=top;spacing=-2;align=center;"+..
+            "displayedLabel=Typeshield %s<br>on board %s"
+    style = "SERVO_WRITE_SB;blockWithLabel;"+..
+            "verticalLabelPosition=bottom;verticalAlign=top;spacing=-2;align=center;"+..
+            "displayedLabel=Servo WRITE %s<br>on board %s"
+    style = "ARDUINO_DIGITAL_WRITE;blockWithLabel;"+..
+            "verticalLabelPosition=bottom;verticalAlign=top;spacing=-2;align=center;"+..
+            "displayedLabel=Digital WRITE<br>Pin %s on board %s"
+  -->
+    <!--
+    <add as="Capacitor" extend="Icon">
+        <add as="image" value="$SCILAB/modules/xcos/images/blocks/Capacitor.svg"/>
+    </add>
+    -->
+</mxStylesheet>

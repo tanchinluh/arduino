@@ -1,0 +1,31 @@
+// This file is released under the 3-clause BSD license. See COPYING-BSD.
+clear arduinolib ;
+try
+    // ulink previous function with same name
+[bOK, ilib] = c_link('open_serial');
+if bOK then
+  ulink(ilib);
+end
+//
+[bOK, ilib] = c_link('close_serial');
+if bOK then
+  ulink(ilib);
+end
+//
+[bOK, ilib] = c_link('write_serial');
+if bOK then
+  ulink(ilib);
+end
+//
+[bOK, ilib] = c_link('status_serial');
+if bOK then
+  ulink(ilib);
+end
+//
+[bOK, ilib] = c_link('read_serial');
+if bOK then
+  ulink(ilib);
+end
+    
+xcosPalDelete('Arduino');
+end

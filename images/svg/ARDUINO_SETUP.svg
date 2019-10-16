@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" inkscape:version="0.48.3.1 r9886" xmlns:svg="http://www.w3.org/2000/svg" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:cc="http://creativecommons.org/ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" sodipodi:docname="ARDUINO_SETUP.svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="236.499px"
+	 height="247.781px" viewBox="0 0 236.499 247.781" enable-background="new 0 0 236.499 247.781" xml:space="preserve">
+<radialGradient id="path3868_1_" cx="833.2502" cy="-3527.9846" r="123.8434" gradientTransform="matrix(0.9548 0 0 -0.9617 -689.5905 -3259.6597)" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#36BAC0"/>
+	<stop  offset="1" style="stop-color:#2D9094"/>
+</radialGradient>
+<path id="path3868" sodipodi:cy="3393.2393" sodipodi:rx="119.14749" sodipodi:cx="802.91974" sodipodi:type="arc" sodipodi:ry="119.14749" fill="url(#path3868_1_)" stroke="#02797E" stroke-width="9.392" stroke-linejoin="round" d="
+	M232.028,119.092c0,63.283-50.935,114.587-113.765,114.587c-62.831,0-113.766-51.303-113.766-114.587
+	c0-63.282,50.935-114.585,113.766-114.585C181.093,4.507,232.028,55.807,232.028,119.092L232.028,119.092z"/>
+<path id="path3086-5" inkscape:connector-curvature="0" sodipodi:nodetypes="cscccsscccsccccssccccccscsscssccccccccccccc" opacity="0.1681" stroke="#000000" enable-background="new    " d="
+	M74.519,83.759c19.915-0.632,27.751,6.89,38.052,17.097c2.355,2.334,4.785,4.877,7.418,7.61l7.618-8.188
+	c6.854-7.772,18.979-15.06,26.906-15.946c16.021-1.747,25.771-1.008,35.62,6.724c12.645,9.923,18.174,20.29,18.546,32.258
+	c0.505,16.243-8.909,33.854-26.849,42.604c-8.038,3.936-22.049,4.356-32.334,1.112c-14.569-6.108-20.807-13.392-29.26-24.677
+	c-13.868,17.696-26.333,26.876-43.252,26.068C15.417,165.492,20.451,85.181,74.519,83.759L74.519,83.759z M88.211,149.809
+	c10.019-5.837,17.529-14.97,23.595-23.951c-6.118-10.271-18.249-23.332-28.545-25.895c-8.038-1.798-20.869,1.284-26.638,6.423
+	c-7.692,6.851-10.912,20.925-6.299,30.452C56.681,149.971,75.464,155.744,88.211,149.809L88.211,149.809z M63.591,120.996
+	l27.084,0.044v9.995l-27.128,0.044L63.591,120.996z M174.699,150.733c9.038-3.081,16.917-13.813,18.43-22.769
+	c1.433-8.479-5.81-20.725-15.395-25.69c-10.448-5.416-23.778-3.995-34.729,6.011c-5.415,4.949-13.628,15.479-13.628,17.773
+	c0,2.345,11.147,16.625,16.315,20.524C154.289,153.072,166.66,153.473,174.699,150.733z M158.549,131.105l-8.989-0.062
+	l-0.017-10.058l9.017,0.021v-8.938l9.148-0.062l-0.054,9.03l8.968,0.032v9.625l-8.438-0.062v9.25h-9.625L158.549,131.105z"/>
+<g>
+	<path fill="#FFFFFF" stroke="#000000" stroke-width="2" d="M27.718,122.5c0,44.19,60.759,60.645,90.775,15.646
+		c31.107,46.656,89.429,27.098,89.429-15.715c0-42.814-58.046-63.398-89.429-15.594C88.753,59.585,27.718,78.307,27.718,122.5
+		L27.718,122.5z M43.673,122.5c0-31.89,45.068-41.955,66.033,0C88.326,162.896,43.673,154.386,43.673,122.5L43.673,122.5z
+		 M127.279,122.5c18.889-42.781,65.179-30.993,65.039,0.069C192.184,153.629,145.615,163.311,127.279,122.5z"/>
+	<rect x="60.611" y="118.023" fill="#FFFFFF" width="26.742" height="8.82"/>
+	<polygon fill="#FFFFFF" points="157.66,126.708 148.837,126.708 148.837,117.331 157.66,117.331 157.66,108.51 167.034,108.51 
+		167.034,117.331 175.858,117.331 175.858,126.708 167.034,126.708 167.034,135.53 157.66,135.53 	"/>
+</g>
+</svg>

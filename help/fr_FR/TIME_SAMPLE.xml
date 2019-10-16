@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="TIME_SAMPLE"> 
+<refnamediv>
+  <refname>TIME_SAMPLE</refname>
+  <refpurpose>Spécifie la durée d'acquisition/pilotage et le pas d'échantillonnage</refpurpose> 
+</refnamediv>
+<refsection>
+  <title>Aperçu</title>
+    <para>
+       <inlinemediaobject>
+          <imageobject>
+             <imagedata fileref="../../images/gif/TIME_SAMPLE.gif" align="center" valign="middle"/>
+          </imageobject>
+       </inlinemediaobject>
+    </para>
+</refsection>
+<refsection id="Contents_TIME_SAMPLE">
+  <title>Contenu</title>
+  <itemizedlist>
+        <listitem>
+          <para>
+            <xref linkend="Palette_TIME_SAMPLE">Palette</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Description_TIME_SAMPLE">Description</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Dialogbox_TIME_SAMPLE">Paramètres</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Example1_TIME_SAMPLE">Exemple 1</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Seealso_TIME_SAMPLE">Voir aussi</xref>
+          </para>
+        </listitem>
+  </itemizedlist>
+</refsection>  
+<refsection id="Palette_TIME_SAMPLE">
+  <title>Palette</title>
+Arduino
+</refsection>
+<refsection id="Description_TIME_SAMPLE">
+  <title>Description</title>
+<para> Ce bloc doit <emphasis role="bold">obligatoirement</emphasis> être placé sur le schéma lors de l'utilisation d'autres blocs de la toolbox.  </para>
+<para> Il permet de définir la durée de communication avec la carte Arduino ainsi que le pas d'échantillonnage utilisé pour les blocs (chaque bloc est cadencé par ce pas). </para>
+<para> La communication série impose un pas limite pour chaque bloc qui est d'environ 8 ms (il est possible de descendre à 4 ms) par bloc.  </para>
+<para> Il conviendra de tester pour des acquisitions complexes que l'échantillonnage retenu est suffisant, pour cela, il faut mesurer que le temps de simulation correspond au temps réel (une simulation de 10 s doit durer 10 s) ; à défaut, il faudra augmenter la période d'échantillonnage. </para>
+
+</refsection>
+<refsection id="Dialogbox_TIME_SAMPLE">
+  <title>Paramètres</title>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/TIME_SAMPLE_dialogbox.png" align="center"/> </imageobject> </inlinemediaobject>
+<para> La durée de simulation (positive) doit être spécifiée. </para>
+<para> Le pas d'échantillonnage doit être renseigné en faisant attention au nombre de blocs Arduino utilisé. </para>
+
+</refsection>
+<refsection id="Example1_TIME_SAMPLE">
+  <title>Exemple 1</title>
+<para> L'exemple ci-dessus montre l'utilisation du bloc dans le cas du clignotement de la led 13 de la carte UNO définie sur le port de communication 5. Les blocs utilisent les paramètres par défaut, sauf pour le bloc PULSE de la palette standard dont on spécifie le déphasage à 0. </para>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/ARDUINO_SETUP_example.png" align="center"/> </imageobject> </inlinemediaobject>
+
+</refsection>
+<refsection id="Seealso_TIME_SAMPLE" role="see also">
+  <title>Voir aussi</title>
+      <simplelist>
+		<member>
+        <link linkend="ARDUINO_SETUP">ARDUINO_SETUP</link>
+		</member>
+	  </simplelist>
+</refsection>
+</refentry>

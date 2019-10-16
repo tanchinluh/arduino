@@ -1,0 +1,73 @@
+==========================
+Arduino toolbox for Scilab
+==========================
+
+v. 1.7 (2019-10-17) / chinluh.tan@bytecode-asia.com
+BUG FIXED
+  * Fixed Scilab 6 compatibility issues
+  * Change the serial to Scilab from char to double to solved ascii issues.
+  * Fixed port >9 not supported issue
+  
+  NEW FEATURES
+  * Multiple boards support (Set to 2 currently as more board yields slow response)
+  * Linux/MacOS(?) Support (Thanks to Nikolay Strelkov link in http://forge.scilab.org/index.php/p/arduino/issues/1556/) 
+
+v. 1.6.2 (2019-06-04) / sgougeon@free.fr
+---------------------
+ BUG FIXED
+ * ARDUINO_pre_simulate() was still too stiff to detect the version answer from the board
+
+
+v. 1.6 (2019-05-30) / sgougeon@free.fr
+-------------------
+ BUGS FIXED
+ * toolbox_arduino_v4.ino file shipped in the module was bad. Replaced with the right file.
+ * ARDUINO_pre_simulate() was expecting arduino_v3.ino instead of arduino_v4.ino
+   and yielded an error "Il faut charger avec le logiciel arduino le sketch
+   toolbox_arduino_v3.ino dans la carte Arduino" when actually dealing with the v.4
+ * The DESCRIPTION file that was removed from v.1.4 is actually needed to instal
+   the module offline. Restored.
+ * Demos: Examples for Scilab 6.0 are displayed with wrong ports positions with Scilab 5.5.
+   The versions for Arduino 1.1 are restored in the binary for the Scilab 5.5.
+
+
+v. 1.5 (2018-09-08) / sgougeon@free.fr
+-------------------
+* toolbox_arduino_v4.ino is now shipped within the toolbox, including the
+  MPU6050 bloc and filtering. Thanks to David VIOLEAU.
+* etc/arduino-style.xml is partly provided (but it does not work).
+
+BUGS FIXED
+* Icons labels are restored and improved.
+* All demos are restored.
+* In the example9.zcos demo, the PI block refered to an inexisting PIcontrol
+  function.
+* The arduino.start changed the user working directory. Fixed.
+* init_arduino() and ARDUINO_post_simulate() had still some old cells
+
+
+v. 1.4 (2018-09-07) / sgougeon@free.fr
+-------------------
+This is mainly a repackaging version.
+
+* The builder can now build for both Scilab 5 and Scilab 6
+* HELP PAGES
+  - images are now gathered in a dedicated directory
+  - .tst source files are now gathered in a dedicated directory
+  - _README.tst file added: only XML files must be updated/upgraded/translated
+  - See also sections: the short descriptions of items are now displayed
+  - Contents sections simplified
+* DESCRIPTION FILE removed (no longer needed)
+* changelog.txt added (this file)
+* bin directory created
+* BUGS FIXED:
+  - the scicos_scicoslib was missing when loading the Arduino module
+  - getArduinoVersion() was not up-to-date. It is no longer necessary to update
+    it: It now reads the VERSION file.
+  - In macros, some messages were in french.
+  
+TODO:
+  * Extend the module to Linux users (through the serial toolbox based on TCL)
+  * Translate help pages in english
+  * Translate error blocks interfaces and messages
+  * Translate demos

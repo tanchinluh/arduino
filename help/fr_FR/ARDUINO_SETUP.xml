@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="ARDUINO_SETUP"> 
+<refnamediv>
+  <refname>ARDUINO_SETUP</refname>
+  <refpurpose>Affecte un port de communication série à une carte Arduino</refpurpose> 
+</refnamediv>
+<refsection>
+  <title>Aperçu</title>
+    <para>
+       <inlinemediaobject>
+          <imageobject>
+             <imagedata fileref="../../images/gif/ARDUINO_SETUP.gif" align="center" valign="middle"/>
+          </imageobject>
+       </inlinemediaobject>
+    </para>
+</refsection>
+<refsection id="Contents_ARDUINO_SETUP">
+  <title>Contenu</title>
+  <itemizedlist>
+        <listitem>
+          <para>
+            <xref linkend="Palette_ARDUINO_SETUP">Palette</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Description_ARDUINO_SETUP">Description</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Dialogbox_ARDUINO_SETUP">Paramètres</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Example1_ARDUINO_SETUP">Exemple 1</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Seealso_ARDUINO_SETUP">Voir aussi</xref>
+          </para>
+        </listitem>
+  </itemizedlist>
+</refsection>  
+<refsection id="Palette_ARDUINO_SETUP">
+  <title>Palette</title>
+Arduino
+</refsection>
+<refsection id="Description_ARDUINO_SETUP">
+  <title>Description</title>
+<para> Ce bloc doit <emphasis role="bold">obligatoirement</emphasis> être placé sur le schéma lors de l'utilisation d'autres blocs de la toolbox.  </para>
+<para> Il permet de définir le port de communication entre la carte Arduino et Xcos. </para>
+<para> Le port à utiliser peut être déterminé en lançant l'application Arduino et en vérifiant le com indiqué dans Outils/Port série. Celui-ci peut également être modifié dans le Gestionnaire de périphériques / Ports (options Avancées). </para>
+<para> Il n'est pas possible actuellement d'utiliser plusieurs cartes Arduino. </para>
+
+<para> La toolbox n'est utilisable que sous Windows pour l'instant. </para>
+
+<para> <emphasis role="bold">Attention pour utiliser la toolbox Arduino, il est indispensable de charger dans la carte Arduino le programme toolbox_arduino.ino disponible sur le site :</emphasis> http://www.demosciences.fr </para>
+
+
+</refsection>
+<refsection id="Dialogbox_ARDUINO_SETUP">
+  <title>Paramètres</title>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/ARDUINO_SETUP_dialogbox.png" align="center"/> </imageobject> </inlinemediaobject>
+<para> Le port de communication doit être spécifié (entre 2 et 9 sinon un message d'erreur apparaît). </para>
+<para> Le numéro de carte Arduino doit être égal à 1 actuellement (sinon un message d'erreur apparaît) </para>
+
+</refsection>
+<refsection id="Example1_ARDUINO_SETUP">
+  <title>Exemple 1</title>
+<para> L'exemple ci-dessus montre l'utilisation du bloc dans le cas du clignotement de la led 13 de la carte UNO définie sur le port de communication 5. Les blocs utilisent les paramètres par défaut, sauf pour le bloc PULSE de la palette standard dont on spécifie le déphasage à 0. </para>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/ARDUINO_SETUP_example.png" align="center"/> </imageobject> </inlinemediaobject>
+
+</refsection>
+<refsection id="Seealso_ARDUINO_SETUP" role="see also">
+  <title>Voir aussi</title>
+      <simplelist>
+		<member>
+        <link linkend="TIME_SAMPLE">TIME_SAMPLE</link>
+		</member>
+	  </simplelist>
+</refsection>
+</refentry>

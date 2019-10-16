@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="INTERRUPT_SB"> 
+<refnamediv>
+  <refname>INTERRUPT_SB</refname>
+  <refpurpose>Envoie un signal d'interruption au pin 2 ou 3 d'une Arduino</refpurpose> 
+</refnamediv>
+<refsection>
+  <title>Aperçu</title>
+    <para>
+       <inlinemediaobject>
+          <imageobject>
+             <imagedata fileref="../../images/gif/INTERRUPT_SB.gif" align="center" valign="middle"/>
+          </imageobject>
+       </inlinemediaobject>
+    </para>
+</refsection>
+<refsection id="Contents_INTERRUPT_SB">
+  <title>Contenu</title>
+  <itemizedlist>
+        <listitem>
+          <para>
+            <xref linkend="Palette_INTERRUPT_SB">Palette</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Description_INTERRUPT_SB">Description</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Dialogbox_INTERRUPT_SB">Paramètres</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Example1_INTERRUPT_SB">Exemple 1</xref>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <xref linkend="Seealso_INTERRUPT_SB">Voir aussi</xref>
+          </para>
+        </listitem>
+  </itemizedlist>
+</refsection>  
+<refsection id="Palette_INTERRUPT_SB">
+  <title>Palette</title>
+Arduino
+</refsection>
+<refsection id="Description_INTERRUPT_SB">
+  <title>Description</title>
+<para> Il s'agit de lire un compteur qui compte l'information issue de capteurs de position absolue (capteur à effet Hall...). </para>
+<para> Le bloc permet de lire les fronts montants détectés sur les entrées à interruptions disponibles de la carte Arduino. Ce sont des entrées capables d’arrêter le programme principal lors d'un changement d’état (fronts d'un signal) afin d’exécuter un sous-programme. Ce sous-programme consiste dans ce cas à incrémenter un compteur.  </para>
+<para> Les pins 2 et 3 sont les seuls pins de l'Arduino Uno supportant les interruptions. Sur la carte Mega, les pins sont 2, 3 et 18 à 21.  </para>
+<para> On rappelle que l'échantillonnage est de 8 ms au minimum pour ce bloc. </para>
+
+</refsection>
+<refsection id="Dialogbox_INTERRUPT_SB">
+  <title>Paramètres</title>
+
+<para> Le bloc propose un menu qui permet la déclaration du pin d'interruption 2 ou 3 sur une carte UNO (2, 3 ou 18 à 21 pour la carte MEGA) et déclaration d'un pin digital quelconque de 2 à 13 pour une carte UNO (2 à 53 pour la carte MEGA). </para>
+<para> Le numéro de la carte ne peut pas être modifié pour l'instant. </para>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/INTERRUPT_SB_dialogbox.png" align="center"/> </imageobject> </inlinemediaobject>
+
+
+</refsection>
+<refsection id="Example1_INTERRUPT_SB" role="see also">
+  <title>Exemple 1</title>
+<para> L'exemple ci-dessous montre l'utilisation du bloc pour compter le signal d'une fourche optique connecté sur le pin 3. </para>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/INTERRUPT_exemple.png" align="center"/> </imageobject> </inlinemediaobject>
+
+</refsection>
+<refsection id="Seealso_INTERRUPT_SB" role="see also">
+  <title>Voir aussi</title>
+      <simplelist>
+		<member>
+        <link linkend="ENCODER_SB">ENCODER_SB</link>
+		</member>
+	  </simplelist>
+</refsection>
+</refentry>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="ANALOG_WRITE_SB"> 
+<refnamediv>
+  <refname>ANALOG_WRITE_SB</refname>
+  <refpurpose>envoie une valeur continûment variable sur un port donné</refpurpose> 
+</refnamediv>
+<refsection>
+  <title>Aperçu</title>
+    <para>
+       <inlinemediaobject>
+          <imageobject>
+             <imagedata fileref="../../images/gif/ANALOG_WRITE_SB.gif" align="center" valign="middle"/>
+          </imageobject>
+       </inlinemediaobject>
+    </para>
+</refsection>
+<refsection id="Contents_ANALOG_WRITE_SB">
+  <title>Contenu</title>
+  <itemizedlist>
+	<listitem>
+	  <para>
+		<xref linkend="Palette_ANALOG_WRITE_SB">Palette</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Description_ANALOG_WRITE_SB">Description</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Dialogbox_ANALOG_WRITE_SB">Paramètres</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Example1_ANALOG_WRITE_SB">Exemple 1</xref>
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+		<xref linkend="Seealso_ANALOG_WRITE_SB">Voir aussi</xref>
+	  </para>
+	</listitem>
+  </itemizedlist>
+</refsection>  
+<refsection id="Palette_ANALOG_WRITE_SB">
+  <title>Palette</title>
+Arduino
+</refsection>
+<refsection id="Description_ANALOG_WRITE_SB">
+  <title>Description</title>
+<para> Les sorties analogiques de l'Arduino Uno sont disponibles sur les pins de sorties logiques (digital)  3,5,6,9,10 et 11. Sur la carte Mega, les sorties sont sur les pins 1 à 13 et 44 à 46. Parler de sorties analogiques est donc un abus de langage. En effet, pour générer cette sortie en minimisant les pertes d’énergie, l'Arduino utilise des PWM (Pulse With Modulation, MLI en français) disponibles sur ces ports. En faisant varier le rapport cyclique de ces PWM, on modifie la tension moyenne aux bornes du composant connecté à ce port, celui-ci a donc l'impression d'avoir une tension d'entrée variable. </para>
+<para> Le rapport cyclique qui théoriquement varie de 0 à 1 est codé sur 8 bits, ainsi une valeur de 0 correspond à un rapport cyclique de 0 et une valeur de 255 à un rapport cyclique de 1. </para>
+<para> On rappelle que l'échantillonnage est de 8 ms au minimum pour ce bloc. </para>
+
+</refsection>
+<refsection id="Dialogbox_ANALOG_WRITE_SB">
+  <title>Paramètres</title>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/ANALOG_WRITE_SB_dialogbox.png" align="center"/> </imageobject> </inlinemediaobject>
+<para> Le numéro du port doit être 3, 5, 6, 9, 10, 11 pour une carte UNO (ports ayant le symbole PWM) et doit être de 1 à 13 ou 44 à 46 pour la carte MEGA. L'utilisation d'un port digital provoquera soit la mise à 0 soit la mise à 1 de celui-ci en fonction de la valeur envoyée. </para>
+<para> Le numéro de la carte ne peut pas être modifié pour l'instant. </para>
+
+</refsection>
+<refsection id="Example1_ANALOG_WRITE_SB">
+  <title>Exemple 1</title>
+<para> L'exemple ci-dessous montre l'utilisation du bloc dans le cas d'un variateur de l'intensité lumineuse d'une LED à partir d'une consigne issue d'un potentiomètre. La LED (en série avec une résistance bien choisie) est connectée à la masse (GND) et au port digital 10 tandis que le potentiomètre est connecté sur le port analogique 2. La valeur lue pour le potentiomètre étant codée sur 10 bits et le signal du PWM étant codé sur 8 bits, il est nécessaire d'ajouter une gain d'adaptation. </para>
+<inlinemediaobject> <imageobject> <imagedata fileref="../images/ANALOG_WRITE_exemple.png" align="center"/> </imageobject> </inlinemediaobject>
+
+</refsection>
+<refsection id="Seealso_ANALOG_WRITE_SB" role="see also">
+  <title>Voir aussi</title>
+      <simplelist>
+		<member>
+        <link linkend="ANALOG_READ_SB">ANALOG_READ_SB</link>
+		</member>
+		<member>
+        <link linkend="DIGITAL_READ_SB">DIGITAL_READ_SB</link>
+		</member>
+		<member>
+        <link linkend="DIGITAL_WRITE_SB">DIGITAL_WRITE_SB</link>
+        </member>
+	</simplelist>
+</refsection>
+</refentry>
