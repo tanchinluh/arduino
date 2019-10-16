@@ -57,6 +57,7 @@ BUGS FIXED
 NEW FEATURES
 * Multiple boards support (Set to 2 currently as more board yields slow response)
 * Linux/MacOS(?) Support (Thanks to Nikolay Strelkov link in http://forge.scilab.org/index.php/p/arduino/issues/1556/) 
+* Modified the dll for serial communication to Scilab 6.1.x gateway format, allowing other contributors to enhance it easier.
 
 ## To-Do
    * Change the firmware to get multiple channels and sent all back to host for performance improvement
