@@ -53,7 +53,9 @@ function block=ARDUINO_DCMOTOR_sim(block,flag)
             code_dir=ascii(48);
         end
         if abs(u1)>255 then
-            val=255;
+            val = 255;
+        elseif u1 == 0
+            val = 1;    // 20191018 - workaround for ascii(0)
         else
             val=abs(ceil(u1));
         end
@@ -89,6 +91,7 @@ function block=ARDUINO_DCMOTOR_sim(block,flag)
         elseif (block.rpar(1)==3) then
             code_sent="C"+string(block.rpar(5))+ascii(48+block.rpar(4))+ascii(48+block.rpar(3))+"0";   //code pour initialiser L293
         end
+
         //        writeserial(port_com,code_sent);  
         handle_num=block.rpar(2);
         handle_str = 'h'+string(handle_num);
@@ -102,7 +105,7 @@ function block=ARDUINO_DCMOTOR_sim(block,flag)
             [a,b,c]=status_serial(evstr(handle_str));
         end
         values=read_serial(evstr(handle_str),2);
-        if (values == 'OK') then
+        if (ascii(values) == 'OK') then
             disp('Init motor successful')
         else
             disp('Init motor failed')

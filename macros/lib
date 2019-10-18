@@ -7,14 +7,14 @@
   <macro name="ARDUINO_ANALOG_WRITE" file="ARDUINO_ANALOG_WRITE.bin" md5="a8e8dea7cb6f98569a94bcc08ff8b0c9"/>
   <macro name="ARDUINO_ANALOG_WRITE_sim" file="ARDUINO_ANALOG_WRITE_sim.bin" md5="f86fd8913f74b7db537e238e0ec96601"/>
   <macro name="ARDUINO_DCMOTOR" file="ARDUINO_DCMOTOR.bin" md5="a65c9c04b8fd4dfe81d96afff94660b9"/>
-  <macro name="ARDUINO_DCMOTOR_sim" file="ARDUINO_DCMOTOR_sim.bin" md5="d3fefc9bd3e891be74ffa98109d0a225"/>
+  <macro name="ARDUINO_DCMOTOR_sim" file="ARDUINO_DCMOTOR_sim.bin" md5="91957c43df6d3ed6ce7f2251aca6257d"/>
   <macro name="ARDUINO_DIGITAL_READ" file="ARDUINO_DIGITAL_READ.bin" md5="5e330401719bef8e8945a9091e0ff7b7"/>
   <macro name="ARDUINO_DIGITAL_READ_sim" file="ARDUINO_DIGITAL_READ_sim.bin" md5="c4804460a331d05b95cb4df6e311af34"/>
   <macro name="ARDUINO_DIGITAL_WRITE" file="ARDUINO_DIGITAL_WRITE.bin" md5="7fc30d8d2f2f2415240e48e2766b0591"/>
   <macro name="ARDUINO_DIG_WRITE_sim" file="ARDUINO_DIG_WRITE_sim.bin" md5="9ec74e73a18bcc33722f8b15533f8031"/>
   <macro name="ARDUINO_ENCODER" file="ARDUINO_ENCODER.bin" md5="a92472b52715c68d63f9a6107ea30255"/>
   <macro name="ARDUINO_ENCODER_sim" file="ARDUINO_ENCODER_sim.bin" md5="029549cda268b6da48997c885f316224"/>
-  <macro name="ARDUINO_INTERRUPT" file="ARDUINO_INTERRUPT.bin" md5="bd5042343065e94b367c6b4883edb30d"/>
+  <macro name="ARDUINO_INTERRUPT" file="ARDUINO_INTERRUPT.bin" md5="673e5e560c8038a17f21b625c486e28f"/>
   <macro name="ARDUINO_INTERRUPT_sim" file="ARDUINO_INTERRUPT_sim.bin" md5="734e5816eeb535ed44e78c51da42dfa0"/>
   <macro name="ARDUINO_PMODHB5_WRITE_sim" file="ARDUINO_PMODHB5_WRITE_sim.bin" md5="0241bd0813bec6fdc68e66be51bed2bf"/>
   <macro name="ARDUINO_SCOPE" file="ARDUINO_SCOPE.bin" md5="3ddc97b6c03b7044ef20761070a5a31b"/>
@@ -28,12 +28,12 @@
   <macro name="ARDUINO_WRITE" file="ARDUINO_WRITE.bin" md5="9529567e1a496ca752c62ac5560063a6"/>
   <macro name="ARDUINO_WRITE_sim" file="ARDUINO_WRITE_sim.bin" md5="db1f771e3c9d0ef53131f1e40872e95b"/>
   <macro name="ARDUINO_post_simulate" file="ARDUINO_post_simulate.bin" md5="7bf46d0250011a63bcdd1c849f371406"/>
-  <macro name="ARDUINO_pre_simulate" file="ARDUINO_pre_simulate.bin" md5="4f531149133788d3af9e4bc6f7b17d3e"/>
+  <macro name="ARDUINO_pre_simulate" file="ARDUINO_pre_simulate.bin" md5="1816b4e30b44d6dfa541d1fc3a916477"/>
   <macro name="DCMOTOR_SB" file="DCMOTOR_SB.bin" md5="138088b14d6aff81e5efb44359b6d080"/>
   <macro name="DIGITAL_READ_SB" file="DIGITAL_READ_SB.bin" md5="50216a7c82e03fe88c5400965ea2d3d4"/>
   <macro name="DIGITAL_WRITE_SB" file="DIGITAL_WRITE_SB.bin" md5="e0ccc5e61d82e0f8ba746f1af0f6cde7"/>
   <macro name="ENCODER_SB" file="ENCODER_SB.bin" md5="931e514b6fce350a01aacc4568e8a828"/>
-  <macro name="INTERRUPT_SB" file="INTERRUPT_SB.bin" md5="d73dd76bd00f54f783c396f3380e8950"/>
+  <macro name="INTERRUPT_SB" file="INTERRUPT_SB.bin" md5="9c78ac2f1f742f4ed70522d7f6279dbf"/>
   <macro name="SERVO_READ_SB" file="SERVO_READ_SB.bin" md5="38974561c37e7ddc1b1e161e2fad05d3"/>
   <macro name="SERVO_WRITE_SB" file="SERVO_WRITE_SB.bin" md5="78f4fa942a0ca7ab987f9ae5a5717d3c"/>
   <macro name="STEPPER_SB" file="STEPPER_SB.bin" md5="3f2803b9c4d0f175dd0535e546d77053"/>
