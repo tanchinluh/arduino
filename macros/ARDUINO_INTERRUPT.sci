@@ -18,6 +18,7 @@ function [x, y, typ]=ARDUINO_INTERRUPT(job, arg1, arg2)
     corresp(19) = 4;
     corresp(20) = 3;
     corresp(21) = 2;
+    corresp = corresp + 1;
     maxboard = 2;
     x=[];
     y=[];

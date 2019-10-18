@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<scilablib name="arduinolib">
+  <macro name="ANALOG_READ_SB" file="ANALOG_READ_SB.bin" md5="7b777ab765b9313333e8480b4454a60c"/>
+  <macro name="ANALOG_WRITE_SB" file="ANALOG_WRITE_SB.bin" md5="6abd19c98b3bda6a78ab353bc441868f"/>
+  <macro name="ARDUINO_ANALOG_READ" file="ARDUINO_ANALOG_READ.bin" md5="37956d1c402b80088cd36e8c4f0e88bf"/>
+  <macro name="ARDUINO_ANALOG_READ_sim" file="ARDUINO_ANALOG_READ_sim.bin" md5="28f286e553c409e7ba91c2c434160b9c"/>
+  <macro name="ARDUINO_ANALOG_WRITE" file="ARDUINO_ANALOG_WRITE.bin" md5="a8e8dea7cb6f98569a94bcc08ff8b0c9"/>
+  <macro name="ARDUINO_ANALOG_WRITE_sim" file="ARDUINO_ANALOG_WRITE_sim.bin" md5="f86fd8913f74b7db537e238e0ec96601"/>
+  <macro name="ARDUINO_DCMOTOR" file="ARDUINO_DCMOTOR.bin" md5="a65c9c04b8fd4dfe81d96afff94660b9"/>
+  <macro name="ARDUINO_DCMOTOR_sim" file="ARDUINO_DCMOTOR_sim.bin" md5="d3fefc9bd3e891be74ffa98109d0a225"/>
+  <macro name="ARDUINO_DIGITAL_READ" file="ARDUINO_DIGITAL_READ.bin" md5="5e330401719bef8e8945a9091e0ff7b7"/>
+  <macro name="ARDUINO_DIGITAL_READ_sim" file="ARDUINO_DIGITAL_READ_sim.bin" md5="c4804460a331d05b95cb4df6e311af34"/>
+  <macro name="ARDUINO_DIGITAL_WRITE" file="ARDUINO_DIGITAL_WRITE.bin" md5="7fc30d8d2f2f2415240e48e2766b0591"/>
+  <macro name="ARDUINO_DIG_WRITE_sim" file="ARDUINO_DIG_WRITE_sim.bin" md5="9ec74e73a18bcc33722f8b15533f8031"/>
+  <macro name="ARDUINO_ENCODER" file="ARDUINO_ENCODER.bin" md5="a92472b52715c68d63f9a6107ea30255"/>
+  <macro name="ARDUINO_ENCODER_sim" file="ARDUINO_ENCODER_sim.bin" md5="029549cda268b6da48997c885f316224"/>
+  <macro name="ARDUINO_INTERRUPT" file="ARDUINO_INTERRUPT.bin" md5="bd5042343065e94b367c6b4883edb30d"/>
+  <macro name="ARDUINO_INTERRUPT_sim" file="ARDUINO_INTERRUPT_sim.bin" md5="734e5816eeb535ed44e78c51da42dfa0"/>
+  <macro name="ARDUINO_PMODHB5_WRITE_sim" file="ARDUINO_PMODHB5_WRITE_sim.bin" md5="0241bd0813bec6fdc68e66be51bed2bf"/>
+  <macro name="ARDUINO_SCOPE" file="ARDUINO_SCOPE.bin" md5="3ddc97b6c03b7044ef20761070a5a31b"/>
+  <macro name="ARDUINO_SERVO_READ" file="ARDUINO_SERVO_READ.bin" md5="7a2a0306a6afc39fd775ba8812b71431"/>
+  <macro name="ARDUINO_SERVO_READ_sim" file="ARDUINO_SERVO_READ_sim.bin" md5="b852e610a4946aa868eafa646595378b"/>
+  <macro name="ARDUINO_SERVO_WRITE" file="ARDUINO_SERVO_WRITE.bin" md5="fcd1d77ab27d28f60b6f39116304de0f"/>
+  <macro name="ARDUINO_SERVO_WRITE_sim" file="ARDUINO_SERVO_WRITE_sim.bin" md5="f380051aa490076dd062571ec26d45a7"/>
+  <macro name="ARDUINO_SETUP" file="ARDUINO_SETUP.bin" md5="aaf1c333f3aee1ab729bdfa9fec96fd2"/>
+  <macro name="ARDUINO_STEPPER" file="ARDUINO_STEPPER.bin" md5="b9d7f3b0c4a8f6f4be67acb5f80868e9"/>
+  <macro name="ARDUINO_STEPPER_sim" file="ARDUINO_STEPPER_sim.bin" md5="9c73dbc0008d0cb5bace60a7bfc5f5a2"/>
+  <macro name="ARDUINO_WRITE" file="ARDUINO_WRITE.bin" md5="9529567e1a496ca752c62ac5560063a6"/>
+  <macro name="ARDUINO_WRITE_sim" file="ARDUINO_WRITE_sim.bin" md5="db1f771e3c9d0ef53131f1e40872e95b"/>
+  <macro name="ARDUINO_post_simulate" file="ARDUINO_post_simulate.bin" md5="7bf46d0250011a63bcdd1c849f371406"/>
+  <macro name="ARDUINO_pre_simulate" file="ARDUINO_pre_simulate.bin" md5="4f531149133788d3af9e4bc6f7b17d3e"/>
+  <macro name="DCMOTOR_SB" file="DCMOTOR_SB.bin" md5="138088b14d6aff81e5efb44359b6d080"/>
+  <macro name="DIGITAL_READ_SB" file="DIGITAL_READ_SB.bin" md5="50216a7c82e03fe88c5400965ea2d3d4"/>
+  <macro name="DIGITAL_WRITE_SB" file="DIGITAL_WRITE_SB.bin" md5="e0ccc5e61d82e0f8ba746f1af0f6cde7"/>
+  <macro name="ENCODER_SB" file="ENCODER_SB.bin" md5="931e514b6fce350a01aacc4568e8a828"/>
+  <macro name="INTERRUPT_SB" file="INTERRUPT_SB.bin" md5="d73dd76bd00f54f783c396f3380e8950"/>
+  <macro name="SERVO_READ_SB" file="SERVO_READ_SB.bin" md5="38974561c37e7ddc1b1e161e2fad05d3"/>
+  <macro name="SERVO_WRITE_SB" file="SERVO_WRITE_SB.bin" md5="78f4fa942a0ca7ab987f9ae5a5717d3c"/>
+  <macro name="STEPPER_SB" file="STEPPER_SB.bin" md5="3f2803b9c4d0f175dd0535e546d77053"/>
+  <macro name="TIME_SAMPLE" file="TIME_SAMPLE.bin" md5="47eecaf4c3bf4b457970db18a57f5dae"/>
+  <macro name="getArduinoVersion" file="getArduinoVersion.bin" md5="450322503f456e5a38a58ded18c0298a"/>
+  <macro name="init_arduino" file="init_arduino.bin" md5="0b1893d0c64e70631289f6d3b5dc8083"/>
+  <macro name="nicescope" file="nicescope.bin" md5="78faa7b283da18b3593adf7bb6fa9e39"/>
+  <macro name="post_xcos_simulate" file="post_xcos_simulate.bin" md5="698fc5fe6435bde618f088a023e28314"/>
+  <macro name="pre_xcos_simulate" file="pre_xcos_simulate.bin" md5="5f359847c713c1c1aeef8ccd7d8a2260"/>
+</scilablib>

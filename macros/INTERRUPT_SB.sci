@@ -13,6 +13,7 @@
 function [x, y, typ]=INTERRUPT_SB(job, arg1, arg2)
     global corresp;
     corresp(2)=0;corresp(3)=1;corresp(21)=2;corresp(20)=3;corresp(19)=4;corresp(18)=5;
+    corresp = corresp + 1;
     x=[];
     y=[];
     typ=[];

@@ -63,12 +63,12 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
                 end
                 values=read_serial(evstr(handle_str),2);
                 
-                if tcur>=2 | grep(ascii(values), "v4")==[]
+                if tcur>=2 | grep(ascii(values), "v5")==[]
                     funcprot(old_funcprot)
-                    messagebox("You have to load the toolbox_arduino_v4-x.ino sketch with the arduino software in the Arduino board")
+                    messagebox("You have to load the toolbox_arduino_v5-x.ino sketch with the arduino software in the Arduino board")
                     error('ino')
                 else
-                    disp("Version arduino_v4-x.ino found.")
+                    disp("Version arduino_v5-x.ino found.")
                 end
 
                 //writeserial(port_com,ascii(201)+ascii(201)); //mise a zero programme arduino

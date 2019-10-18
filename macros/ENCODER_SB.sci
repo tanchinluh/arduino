@@ -14,6 +14,7 @@ function [x, y, typ]=ENCODER_SB(job, arg1, arg2)
     global corresp;
     //correspondance entre le numero de la PIN et le numéro de l'interruption
     corresp(2)=0;corresp(3)=1;corresp(21)=2;corresp(20)=3;corresp(19)=4;corresp(18)=5;
+    corresp = corresp + 1;
     x=[];
     y=[];
     typ=[];

@@ -24,7 +24,7 @@ function block=ARDUINO_ENCODER_sim(block,flag)
         // Envoi de la trame sur le port série pour dire de renvoyer la valeur comptée
         code_sent="Ep"+ascii(corresp(block.rpar(3)));
         //      writeserial(port_com,code_sent);
-        handle_num=block.rpar(2);
+        handle_num=block.rpar(1);
         handle_str = 'h'+string(handle_num);
 
         write_serial(evstr(handle_str),code_sent,3)
@@ -43,7 +43,7 @@ function block=ARDUINO_ENCODER_sim(block,flag)
         end
         values=read_serial(evstr(handle_str),4);
         //temp=ascii(values);
-        temp = values;
+        temp = values;  
         val=double(int32(uint32(256^3*temp(4)+256^2*temp(3)+256*temp(2)+temp(1))));
         //      disp(val)
         block.outptr(1)=val;
@@ -67,7 +67,8 @@ function block=ARDUINO_ENCODER_sim(block,flag)
         else//mode 1 ou 2
             code_sent=code_sent+ascii(0+block.rpar(4))+string(block.rpar(2));//on envoie le num de PIN en mode 1x/2x
         end
-        handle_num=block.rpar(2);
+        
+        handle_num=block.rpar(1);
         handle_str = 'h'+string(handle_num);
         //          writeserial(port_com,code_sent);
         write_serial(evstr(handle_str),code_sent,5)
@@ -81,7 +82,8 @@ function block=ARDUINO_ENCODER_sim(block,flag)
             code_sent="Er"+ascii(corresp(block.rpar(3)))+ascii(corresp(block.rpar(3)));
         end
         //          writeserial(port_com,code_sent);
-        handle_num=block.rpar(2);
+
+        handle_num=block.rpar(1);
         handle_str = 'h'+string(handle_num);
         write_serial(evstr(handle_str),code_sent,4)
         //          disp(code_sent)
