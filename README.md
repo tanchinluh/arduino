@@ -91,3 +91,12 @@ You should have received a copy of the GNU General Public License along with thi
 2. Yann Debray 
 3. Samuel Gougeon
 
+## Extra Demo Videos
+1. Using Scilab arduino module for soft real-time closed-loop control
+https://www.linkedin.com/posts/tanchinluh_scilab-activity-6590880449571192832-FwU9
+2. Scilab arduino under linux
+https://www.linkedin.com/posts/tanchinluh_scilab-activity-6590139219363094528-OAvt
+3. Working with 2 Ardiono Uno boards
+https://www.linkedin.com/posts/tanchinluh_scilab-arduino-activity-6589898816311390208-Oo7Z
+https://www.linkedin.com/posts/tanchinluh_scilab-arduino-activity-6589484169330561024-A3io
+
