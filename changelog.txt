@@ -2,6 +2,11 @@
 Arduino toolbox for Scilab
 ==========================
 
+v. 1.7.1 (2020-01-05) / chinluh.tan@bytecode-asia.com
+BUGS FIXED
+* Fixed 2206 Problem with Servo_Write Block
+* Restore MPU6050 block
+
 v. 1.7 (2019-10-17) / chinluh.tan@bytecode-asia.com
 BUG FIXED
   * Fixed Scilab 6 compatibility issues

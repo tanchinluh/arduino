@@ -1,8 +1,0 @@
-LIBRARY    serial_lib.dll
-EXPORTS
-	open_serial
-	close_serial
-	write_serial
-	status_serial
-	read_serial
-	serial_lib

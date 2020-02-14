@@ -57,7 +57,7 @@ function [x, y, typ]=ARDUINO_SERVO_WRITE(job, arg1, arg2)
                 graphics.exprs = exprs;
                 x.model=model;
                 x.graphics = graphics;
-                x.graphics.style = msprintf(style, exprs')
+                //x.graphics.style = msprintf(style, exprs')
                 break
             else
                 message(mess);
@@ -79,7 +79,7 @@ function [x, y, typ]=ARDUINO_SERVO_WRITE(job, arg1, arg2)
         x=standard_define([2 2],model,[],[]);
         x.graphics.in_implicit = 'E';
         tmp = [string(Pin),string(num_arduino)]
-        x.graphics.style = msprintf(style, tmp);
+        //x.graphics.style = msprintf(style, tmp);
         x.graphics.exprs = tmp;
     end
 endfunction

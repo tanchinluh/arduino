@@ -48,6 +48,11 @@ arduino_Path is where this file is.
 
 ## Revisions
 
+### REVISION NOTES 1.7.1
+BUGS FIXED
+* Fixed 2206 Problem with Servo_Write Block
+* Restore MPU6050 block
+
 ### REVISION NOTES 1.7
 BUGS FIXED
 * Fixed Scilab 6 compatibility issues

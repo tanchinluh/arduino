@@ -75,8 +75,8 @@ function arduinolib = startModule()
     sous_blocks=list(..
         ["ARDUINO_SETUP" "TIME_SAMPLE" "ARDUINO_SCOPE"], ..
         ["DIGITAL_READ_SB" "DIGITAL_WRITE_SB" "ENCODER_SB" "INTERRUPT_SB"], ..
-        ["ANALOG_READ_SB" "ANALOG_WRITE_SB" ], ..
-        ["DCMOTOR_SB" "SERVO_WRITE_SB" ]);
+        ["ANALOG_READ_SB" "ANALOG_WRITE_SB" "MPU6050_READ_SB" ], ..
+        ["DCMOTOR_SB" "SERVO_WRITE_SB"]);
 
     for p = 1:size(sous_pal,2)
         local_pal = xcosPal(sous_pal(p));
