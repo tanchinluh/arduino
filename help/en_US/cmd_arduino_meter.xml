@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cmd_arduino_meter.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cmd_arduino_meter" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cmd_arduino_meter</refname>
+    <refpurpose>GUI to display continuous signal from a loop, and break the loop after termination of the GUI</refpurpose>
+  </refnamediv>
+
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+        <varlistentry>
+            <term>val :</term>
+            <listitem><para> Value to be displayed</para></listitem>
+        </varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This GUI provides a convenient way display a continuous data from a loop and break the loop after the termination of the GUI. By this, it behave like a digital meter by showing the data in a GUI instead of the console
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+h = open_serial(1,9,115200)
+val = cmd_analog_in_volt(h,9)
+cmd_arduino_meter(val)
+close_serial(h)
+
+   ]]></programlisting>
+</refsection>
+
+<refsection role="see also">
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cmd_arduino_d_control">cmd_arduino_d_control</link></member>
+   <member><link linkend="cmd_arduino_a_control">cmd_arduino_a_control</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Bruno JOFRET, Tan C.L.</member>
+   </simplelist>
+</refsection>
+</refentry>

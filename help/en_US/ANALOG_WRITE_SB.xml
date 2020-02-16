@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="ANALOG_WRITE_SB">
+  <refnamediv>
+    <refname>ANALOG_WRITE_SB</refname>
+    <refpurpose>Analog outputs which allow generation of analog voltage on a given port</refpurpose>
+  </refnamediv>
+  <refsection>
+    <title>Block Screenshot</title>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../../images/gif/ANALOG_WRITE_SB.gif" align="center" valign="middle"/>
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+  </refsection>
+  <refsection id="Contents_ANALOG_WRITE_SB">
+    <title>Contents</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="Palette_ANALOG_WRITE_SB">Palette</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Description_ANALOG_WRITE_SB">Description</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Dialogbox_ANALOG_WRITE_SB">Dialog box</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example1_ANALOG_WRITE_SB">Example 1</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Seealso_ANALOG_WRITE_SB">See Also</xref>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </refsection>
+  <refsection id="Palette_ANALOG_WRITE_SB">
+    <title>Palette</title>
+    Arduino
+  </refsection>
+  <refsection id="Description_ANALOG_WRITE_SB">
+    <title>Description</title>
+    <para> The analog outputs of the Arduino Uno is available at the pins 3,5,6,9,10 and 11, while on the Mega board, the outputs are on pins 1-13 and 44-46. It is a bit misleading to use the term "analog output", because in order to generate this output while minimizing energy losses, the Arduino uses PWM (Pulse Width Modulation) available on these ports. By varying the duty cycle of the PWM is altered the average voltage across the component connected to this port, which has the effect of having a analog output voltage. </para>
+    <para> The input port accepts the value from 0 to 255 which is correspoding to the duty cycle of 0 to 100%. In other words, sending 0 to the block will generate 0 V output at the port, 127 generates 2.5V and 255 generates 5V. (the port is 8 bits, so the resolutions of output would be 2^8 =256). </para>
+    <para> Do note that the minimum sampling rate is 8 ms for this block. </para>
+
+  </refsection>
+  <refsection id="Dialogbox_ANALOG_WRITE_SB">
+    <title>Dialog box</title>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ANALOG_WRITE_SB_dialogbox.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> The port number must be 3, 5, 6, 9, 10, 11 for UNO card (PWM ports with symbol ~) and must be 1 to 13 or 44 to 46 for the MEGA board. Using other ports would either cause the output to 0 or 5V according to the value sent. </para>
+    <para> The card number can not be changed at this time. </para>
+
+  </refsection>
+  <refsection id="Example1_ANALOG_WRITE_SB">
+    <title>Example 1</title>
+    <para> The following example shows the use of the block to control the brightness of a LED by a potentiometer. The LED (in series with a resistor with proper ohmic) is connected to ground (GND) and to the port 10 while potentiometer is connected to the analog input A2. As the analog input is 10 bits while the PWM is bits, it is necessary to add a gain to convert 0 - 1023 to 0 - 255. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ANALOG_WRITE_exemple.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Seealso_ANALOG_WRITE_SB">
+    <title>See Also</title>
+    <simplelist>
+      <member>
+        <link linkend="ANALOG_READ_SB">ANALOG_READ_SB</link>
+      </member>
+      <member>
+        <link linkend="DIGITAL_READ_SB">DIGITAL_READ_SB</link>
+      </member>
+      <member>
+        <link linkend="DIGITAL_WRITE_SB">DIGITAL_WRITE_SB</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>

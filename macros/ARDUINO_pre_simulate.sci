@@ -145,8 +145,10 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
     end 
 
     continueSimulation = %t;
-    disp("Fin pre_simulate arduino")
-    disp('Acquisition en cours...')
+//    disp("Fin pre_simulate arduino")
+//    disp('Acquisition en cours...')
+    disp("End pre-simulation arduino")
+    disp('Acquisition in progress ...')
     scs_m=resume(scs_m)
 
 endfunction

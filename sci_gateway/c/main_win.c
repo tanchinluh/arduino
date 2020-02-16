@@ -76,7 +76,7 @@ int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 	//in[2] : Double
 	if (scilab_isDouble(env, in[2]) == 0 || scilab_isScalar(env, in[2]) == 0)
 	{
-		Scierror(77, "Wrong type for input argument %d: A double expected.\n", 3);
+		Scierror(77, "Wrong type for input argument %f: A double expected.\n", 3);
 		return -1;
 	}
 	scilab_getDouble(env, in[2], &baudrate);
@@ -99,7 +99,7 @@ int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 	if (handleport[int_handle] == INVALID_HANDLE_VALUE) {
 		if (GetLastError() == ERROR_FILE_NOT_FOUND) {
 			//serial port does not exist. Inform user.
-			Scierror(999, "Serial port %s: does not exist.\n", tmp);
+			Scierror(999, "Serial port COM%.0f does not exist.\n", port);
 			return -1;
 		}
 		//some other error occurred. Inform user.
@@ -138,6 +138,7 @@ int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 	// Create output pointer if COM port open successfully
 	void* val;
 	val = &handleport[int_handle];
+	sciprint("Serial port COM%.0f opened SUCCESSFULLY.\n", port);
 	out[0] = scilab_createPointer(env, val);
 
 	Sleep(500);

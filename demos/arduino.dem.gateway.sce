@@ -13,15 +13,25 @@
 function subdemolist = demo_gateway()
   demopath = get_absolute_file_path("arduino.dem.gateway.sce");
 
-  subdemolist = ["Potentiomètre", "analog_read.dem.sce" ;
-                 "Bouton poussoir Led", "digital_read_write.dem.sce" ;
-                 "Variateur LED", "analog_write.dem.sce" ;
-                 "MoteurCC pilotage direct", "motor.dem.sce";
-                 "Encodeur", "encodeur.dem.sce";
-                 "Interruptions", "interrupt_compteur.dem.sce";
-                 "Asservissement position", "asserv.dem.sce";
-                 "ServoMoteur", "servomotor.dem.sce";
-                 "Exemples Livret", "exemples_livret.dem.gateway.sce";
+//  subdemolist = ["Potentiomètre", "analog_read.dem.sce" ;
+//                 "Bouton poussoir Led", "digital_read_write.dem.sce" ;
+//                 "Variateur LED", "analog_write.dem.sce" ;
+//                 "MoteurCC pilotage direct", "motor.dem.sce";
+//                 "Encodeur", "encodeur.dem.sce";
+//                 "Interruptions", "interrupt_compteur.dem.sce";
+//                 "Asservissement position", "asserv.dem.sce";
+//                 "ServoMoteur", "servomotor.dem.sce";
+//                 "Exemples Livret", "exemples_livret.dem.gateway.sce";
+//                ];
+  subdemolist = ["Potentiometer", "analog_read.dem.sce" ;
+                 "Led Push Button", "digital_read_write.dem.sce" ;
+                 "LED dimmer", "analog_write.dem.sce" ;
+                 "Openloop DC Motor", "motor.dem.sce";
+                 "Encoder", "encodeur.dem.sce";
+                 "Interrupt", "interrupt_compteur.dem.sce";
+                 "Servo position control with PID", "asserv.dem.sce";
+                 "ServoMotor", "servomotor.dem.sce";
+                 "Examples in documentation", "exemples_livret.dem.gateway.sce";
                 ];
 
   subdemolist(:,2) = demopath + subdemolist(:,2);

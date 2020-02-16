@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from open_serial.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="open_serial" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>open_serial</refname>
+    <refpurpose>Command to initialize the serial port which is connected to Arduino</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   h=open_serial(n, nPort,baudrate)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>n :</term>
+      <listitem><para> Board number, to point to any connected card</para></listitem></varlistentry>
+   <varlistentry><term>nPort :</term>
+      <listitem><para> Com port in which the Arduino is connected to</para></listitem></varlistentry>
+   <varlistentry><term>baudrate :</term>
+      <listitem><para> baudrate for the serial comminication</para></listitem></varlistentry>
+   <varlistentry><term>h :</term>
+      <listitem><para> Board pointer, to indicate which board to use to differentiate one board from another</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+To connect to the Arduino board. To check the port number, do to the device manager or check it from the Arduino software
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+h = open_serial(1,9,115200)
+close_serial(h)
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="close_serial">close_serial</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Bruno JOFRET</member>
+   </simplelist>
+</refsection>
+</refentry>

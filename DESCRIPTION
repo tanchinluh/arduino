@@ -4,7 +4,7 @@ Title: Arduino
 
 Summary: Arduino Communication through Serial
 
-Version: 1.7
+Version: 1.8
 
 Author: Bruno JOFRET
 
@@ -21,7 +21,7 @@ Entity: Scilab Enterprises
 
 WebSite: http://www.scilab-enterprises.com/
 
-URL: http://atoms.scilab.org/toolboxes/arduino/1.7
+URL: http://atoms.scilab.org/toolboxes/arduino/1.8
 
 License: CeCILL
 
@@ -29,17 +29,17 @@ ScilabVersion: any
 
 Depends: 
 
-Date: 2019-06-04 00:04:32
+Date: 2020-02-16 16:04:32
 
 Description: 
  This toolbox provides Arduino communication blocks for Xcos.
  
  Communication is performed through Serial port.
  
- The Arduino board must be flashed with the file toolbox_arduino_v4.ino
+ The Arduino board must be flashed with the file toolbox_arduino_v5.ino
  (shipped in the module and downloadable from the ATOMS page).
  
- TUTORIALS (in english)
+ TUTORIALS (in english - available in older version, minor modification might be required)
  ----------------------
  * Blinking LED Tutorial: 
  https://atoms.scilab.org/toolboxes/arduino/1.5/files/Scilab_Arduino_Blinking_LED_Tutorial.pdf
@@ -48,32 +48,30 @@ Description:
  
  RESOURCES
  ---------
- * toolbox_arduino_v4.ino:
-   http://atoms.scilab.org/toolboxes/arduino/1.5/files/toolbox_arduino_v4-1.ino
+ * toolbox_arduino_v5.ino:
+   http://atoms.scilab.org/toolboxes/arduino/1.8/files/toolbox_arduino_v5.ino
  * Demosciences project (in french):
    http://www.demosciences.fr/projets/scilab-arduino
  
  NOTE
  ----
- * toolbox_arduino_v4.ino is shipped within the toolbox, including the
+ * toolbox_arduino_v5.ino is shipped within the toolbox, including the
    MPU6050 bloc and filtering. Thanks to David VIOLEAU.
  * etc/arduino-style.xml is partly provided (but it does not (yet) work).
  
- CHANGES 1.6.2 =&gt; 1.7
- ====================
+ CHANGES 1.7 =&gt; 1.8
+ ====================  
   BUGS FIXED
-  * Fixed Scilab 6 compatibility issues
-  * Change the serial to Scilab from char to double to solved ascii issues.
-  * Fixed port >9 not supported issue
-  
+  * Fixed 2206 Problem with Servo_Write Block
+
   NEW FEATURES
-  * Multiple boards support (Set to 2 currently as more board yields slow response)
-  * Linux/MacOS(?) Support (Thanks to Nikolay Strelkov link in http://forge.scilab.org/index.php/p/arduino/issues/1556/) 
+  * Add command lines control support for common interface.
+  * Translate help pages in english
+  * Translate demos
   
   TODO:
-   * Change the firmware to get multiple channels and sent all back to host for performance improvement
-   * Translate help pages in english
-   * Translate blocks interfaces and error messages
-   * Translate demos
+  * Change the firmware to get multiple channels and sent all back to host for performance improvement
+  * Translate blocks interfaces and error messages
+
  
 

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="DCMOTOR_SB">
+  <refnamediv>
+    <refname>DCMOTOR_SB</refname>
+    <refpurpose>This block is used to control a DC motor </refpurpose>
+  </refnamediv>
+  <refsection>
+    <title>Block Screenshot</title>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../../images/gif/DCMOTOR_SB.gif" align="center" valign="middle"/>
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+  </refsection>
+  <refsection id="Contents_DCMOTOR_SB">
+    <title>Contents</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="Palette_DCMOTOR_SB">Palette</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Description_DCMOTOR_SB">Description</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Dialogbox_DCMOTOR_SB">Dialog box</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example1_DCMOTOR_SB">Example 1</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Seealso_DCMOTOR_SB">See Also</xref>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </refsection>
+  <refsection id="Palette_DCMOTOR_SB">
+    <title>Palette</title>
+    Arduino
+  </refsection>
+  <refsection id="Description_DCMOTOR_SB">
+    <title>Description</title>
+    <para> The DCMOTOR block is used to control one or more DC motors. Arduino board does not deliver enough power, so it is necessary to use a H-bridge circuit/IC to control the motor. There are several types of  H-bridge IC that do not all operate on the same principle. For example, the L298 requires the use of a PWM signal with current sense. The L293 uses two PWM to set the speed and direction. Ready-to-use Shields are also available.  </para>
+    <para> This is why the block is used to select the type of card or H-bridge used and depending on the choice, a different menu would pop up to for the device dependent setting (port numbers or motor number ...)  </para>
+    <para> Remember that the PWM is 8-bit (0 to 255).  </para>
+    <para> The input of the block could accept any value, but it would saturate at +- 255.  </para>
+    <para> Do note that the sampling rate is 8 ms minimum for this block. </para>
+    <para>      </para>
+  </refsection>
+  <refsection id="Dialogbox_DCMOTOR_SB">
+    <title>Dialog box</title>
+    <para> The block has two menus.  </para>
+    <para> The first lets you choose the type of card used:  </para>
+    <para> 1 for official Motorshield Rev3 available on the website arduino.cc card  </para>
+    <para> 2 H-bridge L298 using PWM and a current sense  </para>
+    <para> 3 H-bridge L293 using two PWM  </para>
+    <para> The card number can not be changed at this time. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/DCMOTOR_SB_dialogbox1.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+    <para> The second menu is for the setting of the selected card used  </para>
+    <para> For Motorshield channel number 1 or 2 correspond to the motor A or B on the Shield. </para>
+
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/DCMOTOR_SB_dialogbox2.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> For L298, one informs the port number specification of meaning (any digital port), the number of the port for PWM speed (3,5,6,9,10,11) and the number of motor-driven (limited 1 to 4) </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/DCMOTOR_SB_dialogbox3.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> For L293, the setting are 2 PWM port and the motor number (1 to 3) </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/DCMOTOR_SB_dialogbox4.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Example1_DCMOTOR_SB">
+    <title>Example 1</title>
+    <para> The following example shows the  of the motor unit associated with a potentiometer. When the knob is in the middle position, the motor is not moving while when the knob is turned in one direction or the other, the motor is moving faster or slower in one direction or the other.  </para>
+    <para> A gain block is used to convert the 10 bits analog input to the 8 bits motor output. (or the input of this block) </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/DCMOTOR_exemple.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Seealso_DCMOTOR_SB">
+    <title>See Also</title>
+    <simplelist>
+      <member>
+        <link linkend="ENCODER_SB">ENCODER_SB</link>
+      </member>
+      <member>
+        <link linkend="SERVO_WRITE_SB">SERVO_WRITE_SB</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>

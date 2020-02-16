@@ -48,6 +48,15 @@ arduino_Path is where this file is.
 
 ## Revisions
 
+### REVISION NOTES 1.8
+BUGS FIXED
+* Fixed issue of extra figure popup when demo figure is on
+
+NEW FEATURES
+* Add command lines control support for common interface.
+* Translate help pages in english
+* Translate demos
+
 ### REVISION NOTES 1.7.1
 BUGS FIXED
 * Fixed 2206 Problem with Servo_Write Block
@@ -73,11 +82,11 @@ NEW FEATURES
 
 ## Version
 
-This is the Revision 1.7 of arduino toolbox for Scilab 6.0.x
+This is the Revision 1.8 of arduino toolbox for Scilab 6.0.x
 
 ## Authors
 
-This is the Revision 1.7 of arduino toolbox for Scilab 6.0.x
+This is the Revision 1.8 of arduino toolbox for Scilab 6.0.x
 Modified By Tan Chin Luh 
 
 Original Works By Bruno JOFRET

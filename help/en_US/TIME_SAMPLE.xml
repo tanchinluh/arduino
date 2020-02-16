@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="TIME_SAMPLE">
+  <refnamediv>
+    <refname>TIME_SAMPLE</refname>
+    <refpurpose>Set the control duration and the sampling time</refpurpose>
+  </refnamediv>
+  <refsection>
+    <title>Block Screenshot</title>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../../images/gif/TIME_SAMPLE.gif" align="center" valign="middle"/>
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+  </refsection>
+  <refsection id="Contents_TIME_SAMPLE">
+    <title>Contents</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="Palette_TIME_SAMPLE">Palette</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Description_TIME_SAMPLE">Description</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Dialogbox_TIME_SAMPLE">Dialog box</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example1_TIME_SAMPLE">Example 1</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Seealso_TIME_SAMPLE">See Also</xref>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </refsection>
+  <refsection id="Palette_TIME_SAMPLE">
+    <title>Palette</title>
+    Arduino
+  </refsection>
+  <refsection id="Description_TIME_SAMPLE">
+    <title>Description</title>
+    <para>
+      This block is <emphasis role="bold">compulsory</emphasis> to be placed in the xcos model to use this toolbox.
+    </para>
+    <para> It defines the simulation time of the model as well as the sampling time used for the model (each block is sampled by this step).  </para>
+    <para> Due to the limitation of serial communication the sampling time is about 8 ms (it is possible to go down to 4 ms) per block.  </para>
+    <para> For the complex model, do make sure that the sampling is sufficient for the execution. This could be done by measuring the simulation time is the actual time (10 s simulation should last 10 s). Otherwise, increase the sampling period to suit the need of the model.  </para>
+
+  </refsection>
+  <refsection id="Dialogbox_TIME_SAMPLE">
+    <title>Dialog box</title>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/TIME_SAMPLE_dialogbox.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> The simulation time (positive) must be specified.  </para>
+    <para> The sampling time must be set completed according to the complexity of the model </para>
+
+  </refsection>
+  <refsection id="Example1_TIME_SAMPLE">
+    <title>Example 1</title>
+    <para> The example below shows the use of the block to blink the LED on port 13 of the UNO card set on the communication port 5. All blocks are using the default settings, except for the PULSE block the standard palette of which the phase shift is set to 0. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ARDUINO_SETUP_example.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Seealso_TIME_SAMPLE">
+    <title>See Also</title>
+    <simplelist>
+      <member>
+        <link linkend="ARDUINO_SETUP">ARDUINO_SETUP</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>

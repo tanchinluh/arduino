@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="ENCODER_SB">
+  <refnamediv>
+    <refname>ENCODER_SB</refname>
+    <refpurpose>Used to read encoder signal from one or more channels.</refpurpose>
+  </refnamediv>
+  <refsection>
+    <title>Block Screenshot</title>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../../images/gif/ENCODER_SB.gif" align="center" valign="middle"/>
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+  </refsection>
+  <refsection id="Contents_ENCODER_SB">
+    <title>Contents</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="Palette_ENCODER_SB">Palette</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Description_ENCODER_SB">Description</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Dialogbox_ENCODER_SB">Dialog box</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example1_ENCODER_SB">Example 1</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example2_ENCODER_SB">Example 2</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Seealso_ENCODER_SB">See Also</xref>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </refsection>
+  <refsection id="Palette_ENCODER_SB">
+    <title>Palette</title>
+    Arduino
+  </refsection>
+  <refsection id="Description_ENCODER_SB">
+    <title>Description</title>
+    <para> Many sensors (incremental encoder, Hall sensor ...) return a pulses signal for which one wishes to count the edges. The block is used to perform this operation for one or two encoders. It uses the interrupts inputs available on the Arduino board. These inputs are capable of stopping the main program during a change of state (edges of a signal) to execute a subroutine. The subroutine in this case is to increment or decrement a counter. </para>
+    <para> Pins 2 and 3 are the only pins of the Arduino Uno that support interrupts. On the Mega board, the pins are 2, 3 and from 18 to 21. It is necessary to use an additional signal to determine the direction of the encoder. </para>
+    <para> Thus, the block offers the possibility to read from a quadrature encoder. It is then necessary that the two channels are wired to the interrupt and the rising and falling edges are taken into account on two channels pins (the precision is increased and can also determine the direction). </para>
+    <para> On the contrary, if a mode other than the quadrature is used, only one pin must be connected to the interrupt, the other pin can be connected to a conventional digital input. </para>
+    <para> Do note that the minimum sampling rate is 8 ms for this block. </para>
+
+  </refsection>
+  <refsection id="Dialogbox_ENCODER_SB">
+    <title>Dialog box</title>
+
+    <para> The block has two menus. </para>
+    <para> The first allows you to select the mode on how to read the signal from the encoder (choice of 1, 2 or 4). </para>
+    <para> The card number can not be changed at this time. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ENCODER_SB_dialogbox1.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> Mode 1 uses a one interrupt and any digital channel to determine the direction. Only the rising edges of the channel interrupt is taken into account in this mode. </para>
+    <para> Mode 2 uses the same channels, but both the rising and falling edges of the channel interrupt is taken into account. </para>
+    <para> Mode 4 corresponds to the quadrature mode. In this mode, the rising and falling edges of the two channels are taken into account. </para>
+
+    <para> The second menu allows you to specify the ports used in the mode selected: </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ENCODER_SB_dialogbox2.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> mode 1x : Declaration of interrupt pins 2 or 3 on a UNO card (2, 3 or 18 to 21 for the MEGA board) and a declaration of any digital pin 2 to 13 for a UNO card (2 to 53 MEGA) </para>
+    <para> mode 2x : Same as above. </para>
+    <para> mode 4x : Mandatory use of two interrupt pins 2 and 3 on a UNO card. 2 from pin 2, 3 or from 18 to 21 for MEGA. </para>
+
+  </refsection>
+  <refsection id="Example1_ENCODER_SB">
+    <title>Example 1</title>
+    <para> The following example shows the use of the block in the case of a motor whose position is noted over time and speed from the signal from the encoder. The 4x mode was chosen to improve the accuracy. The setting of the motor is the same as that of motor example. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ENCODER_exemple.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Example2_ENCODER_SB">
+    <title>Example 2</title>
+    <para> The following example shows a position control using information from the encoder for comparison with a reference variable. A PI controller is used to correct the difference and outputting the control voltage for the DC motor. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ASSERV_POS_exemple.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Seealso_ENCODER_SB">
+    <title>See Also</title>
+    <simplelist>
+      <member>
+        <link linkend="DCMOTOR_SB">DCMOTOR_SB</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>

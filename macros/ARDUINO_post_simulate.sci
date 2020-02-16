@@ -67,6 +67,7 @@ function []=ARDUINO_post_simulate(%cpr, scs_m, needcompile)
         nicescope()
         if grid_on then
             list_fig=winsid();
+            list_fig(list_fig==100000) = []
             for i=list_fig
                 scf(i);
                 xgrid;
@@ -74,7 +75,7 @@ function []=ARDUINO_post_simulate(%cpr, scs_m, needcompile)
         end
     end  
 
-    disp('Fin post_simulate')
+    disp('End post-simulation')
 
 endfunction
 
@@ -85,8 +86,8 @@ function plot_aftersim_ard1(list_scope,scs)
     nb_scope=size(list_scope,1);
     legendes=cell();
     //    grid_on=0;
-    list_fig=winsid();
-
+    list_fig=winsid()
+    list_fig(list_fig==100000) = []
     for i=1:size(list_scope,1)
         scf(list_fig(i));
         j=list_scope(i);

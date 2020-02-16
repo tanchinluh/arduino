@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cmd_arduino_d_control.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cmd_arduino_d_control" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cmd_arduino_d_control</refname>
+    <refpurpose>GUI to control digital signal to be sent to a connected Arduino board</refpurpose>
+  </refnamediv>
+
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+        <varlistentry>
+            <term>h :</term>
+            <listitem><para> Board pointer, to indicate which board to use to differentiate one board from another</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>pin_no :</term>
+            <listitem><para> Digital pin to sent the signal</para></listitem>
+        </varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This GUI provides a convenient way to control the value (0-255) to sent to the given pin number on Arduino.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+h = open_serial(1,9,115200)
+cmd_arduino_d_control(h,9)
+close_serial(h)
+
+   ]]></programlisting>
+</refsection>
+
+<refsection role="see also">
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cmd_digital_out_volt">cmd_digital_out_volt</link></member>
+   <member><link linkend="cmd_digital_out">cmd_digital_out</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Bruno JOFRET, Tan C.L.</member>
+   <member>str = string(val)</member>
+   </simplelist>
+</refsection>
+</refentry>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="INTERRUPT_SB">
+  <refnamediv>
+    <refname>INTERRUPT_SB</refname>
+    <refpurpose>Used to track a set of events on one or more channels.</refpurpose>
+  </refnamediv>
+  <refsection>
+    <title>Block Screenshot</title>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../../images/gif/INTERRUPT_SB.gif" align="center" valign="middle"/>
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+  </refsection>
+  <refsection id="Contents_INTERRUPT_SB">
+    <title>Contents</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="Palette_INTERRUPT_SB">Palette</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Description_INTERRUPT_SB">Description</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Dialogbox_INTERRUPT_SB">Dialog box</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example1_INTERRUPT_SB">Example 1</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Seealso_INTERRUPT_SB">See Also</xref>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </refsection>
+  <refsection id="Palette_INTERRUPT_SB">
+    <title>Palette</title>
+    Arduino
+  </refsection>
+  <refsection id="Description_INTERRUPT_SB">
+    <title>Description</title>
+    <para> This is a read counter that counts the information from absolute position sensors (Hall effect sensor ...). </para>
+    <para> The block is used to read the rising edges detected on the interruption inputs of the Arduino board. These inputs are capable of stopping the main program during a change of state (edges of a signal) to execute a subroutine. The subroutine in this case is to increment a counter. </para>
+    <para> Pins 2 and 3 are the only pins of the Arduino Uno that support interrupts. On the Mega board, the pins are 2, 3 and 18 to 21. </para>
+    <para> Do note that the minimum sampling rate is 8 ms for this block. </para>
+
+  </refsection>
+  <refsection id="Dialogbox_INTERRUPT_SB">
+    <title>Dialog box</title>
+    <para> The device offers a menu that allows the declaration of the interrupt pin 2 or 3 on a UNO card (2, 3 or 18 to 21 for the MEGA board) and declaration of any digital pin 2 to 13 for a UNO card (2-53 for the MEGA board). </para>
+    <para> The card number can not be changed at this time. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/INTERRUPT_SB_dialogbox.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+
+  </refsection>
+  <refsection id="Example1_INTERRUPT_SB">
+    <title>Example 1</title>
+    <para> The example below shows the use of the block to count the signal of a optical sensor connected to pin 3. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/INTERRUPT_exemple.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Seealso_INTERRUPT_SB">
+    <title>See Also</title>
+    <simplelist>
+      <member>
+        <link linkend="ENCODER_SB">ENCODER_SB</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>

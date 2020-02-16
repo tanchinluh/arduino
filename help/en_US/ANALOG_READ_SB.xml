@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="ANALOG_READ_SB">
+  <refnamediv>
+    <refname>ANALOG_READ_SB</refname>
+    <refpurpose>Analog ports of an Arduino board which allow the acquisition of an analog input</refpurpose>
+  </refnamediv>
+  <refsection>
+    <title>Block Screenshot</title>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../../images/gif/ANALOG_READ_SB.gif" align="center" valign="middle"/>
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+  </refsection>
+  <refsection id="Contents_ANALOG_READ_SB">
+    <title>Contents</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="Palette_ANALOG_READ_SB">Palette</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Description_ANALOG_READ_SB">Description</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Dialogbox_ANALOG_READ_SB">Dialog box</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example1_ANALOG_READ_SB">Example 1</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Seealso_ANALOG_READ_SB">See Also</xref>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </refsection>
+  <refsection id="Palette_ANALOG_READ_SB">
+    <title>Palette</title>
+    Arduino
+  </refsection>
+  <refsection id="Description_ANALOG_READ_SB">
+    <title>Description</title>
+    <para> Arduino UNO board has 6 analog input ports (A0 to A5), the Arduino Mega board has 16 analog input ports (A0 to A15). The 10 bits channels convert the analog input from 0 to 5 volts, to a digital value between 0 and 1023. </para>
+    <para> Do note that the minimum sampling rate is 8 ms for this block. </para>
+
+  </refsection>
+  <refsection id="Dialogbox_ANALOG_READ_SB">
+    <title>Dialog box</title>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ANALOG_READ_SB_dialogbox.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> The port number of 0-5 must be specified for the UNO card, 0-15 for a MEGA board. </para>
+    <para> The card number can not be changed at this time. </para>
+    <para> There would be no verification routine for the setting, please refer to the specification of your Arduino board to put a correct value. </para>
+
+  </refsection>
+  <refsection id="Example1_ANALOG_READ_SB">
+    <title>Example 1</title>
+    <para> The following example shows the use of the block in connecting with an angular potentiometer which signal pin is connected to port 2 of Arduino board. The other two pins of the potentiometer are connected to ground (GND) and the 5 Volt the card directly. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/ANALOG_READ_example.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Seealso_ANALOG_READ_SB">
+    <title>See Also</title>
+    <simplelist>
+      <member>
+        <link linkend="ANALOG_WRITE_SB">ANALOG_WRITE_SB</link>
+      </member>
+      <member>
+        <link linkend="DIGITAL_READ_SB">DIGITAL_READ_SB</link>
+      </member>
+      <member>
+        <link linkend="DIGITAL_WRITE_SB">DIGITAL_WRITE_SB</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>

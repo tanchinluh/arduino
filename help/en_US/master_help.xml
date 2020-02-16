@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!--Begin Entities-->
+<!ENTITY a795213cedb343854dcbfae9aa49435c8 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/ANALOG_READ_SB.xml">
+<!ENTITY a9d5a03ebd4fa6ab3be19062019f279a5 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/ANALOG_WRITE_SB.xml">
+<!ENTITY a4b495e0d7b9ebba094ff7488a94f664c SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/ARDUINO_SETUP.xml">
+<!ENTITY a238fd7175412990d564d2243f002cb60 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/DCMOTOR_SB.xml">
+<!ENTITY a33675e17a691bb06cca4bdbd27faaeef SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/DIGITAL_READ_SB.xml">
+<!ENTITY a084d649e19d717cf8643746086c2f14d SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/DIGITAL_WRITE_SB.xml">
+<!ENTITY abad45a4d849e6eabad045a6e8e96911e SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/ENCODER_SB.xml">
+<!ENTITY afab111e4032b54ff4994f22686349bb6 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/INTERRUPT_SB.xml">
+<!ENTITY ae69ed1e699b10aea433e4e78c2fc2af9 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/SERVO_WRITE_SB.xml">
+<!ENTITY ad5757d5dec0e8a8588dd774d6ceb00a4 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/TIME_SAMPLE.xml">
+<!ENTITY a3966f89e376a0df32d5475fc5dce2dfb SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/close_serial.xml">
+<!ENTITY a9c67266216fa7df6a0c1f5b78b4a5c98 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_analog_in.xml">
+<!ENTITY a85a259ecf4931c4c26b7489bc17c940d SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_analog_in_volt.xml">
+<!ENTITY aee0321a10d702e87b08ce78104638b96 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_analog_out.xml">
+<!ENTITY acd21f05338b142a33f9cd4b67681a2c1 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_analog_out_volt.xml">
+<!ENTITY afe5c47efa3d5d517f4d731a54a3cc238 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_arduino_a_control.xml">
+<!ENTITY a719dd88c9612fca7cca1b852e7ae8176 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_arduino_d_control.xml">
+<!ENTITY ae028c0f935906330ef086e1268e159e5 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_arduino_meter.xml">
+<!ENTITY aa322d8897c892cb2c29eaccdfe99b919 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_dcmotor_release.xml">
+<!ENTITY a03914462f84299b2709a7194cbc758ff SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_dcmotor_run.xml">
+<!ENTITY aebb8f038f28c07eff23e5372deaf68d8 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_dcmotor_setup.xml">
+<!ENTITY a06935bae5f2fd2dd0f552975c56e05c8 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_digital_in.xml">
+<!ENTITY a8fea41c41777f2ee4f22565ce5e3c04d SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_digital_out.xml">
+<!ENTITY ab8a3fff0b51bf23efbaa6508db2fe35a SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_servo_attach.xml">
+<!ENTITY a873c87a3293acf1e4043592b15a867fb SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_servo_detach.xml">
+<!ENTITY a5322b79b7eb8835fa801378277bbbabd SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/cmd_servo_move.xml">
+<!ENTITY acac0d55832350abf5adb75121a6848b3 SYSTEM "file:///C:/Program Files/scilab-6.0.2/contrib/arduino/help/en_US/open_serial.xml">
+<!--End Entities-->
+]>
+<book version="5.0-subset Scilab" xml:lang="en_US"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info xml:id='arduino_manual'>
+    <title>arduino</title>
+  </info>
+
+<part xml:id='section_c5ea22a12057b949858a9c5fa7bfad82'>
+<title>arduino</title>
+&a795213cedb343854dcbfae9aa49435c8;
+&a9d5a03ebd4fa6ab3be19062019f279a5;
+&a4b495e0d7b9ebba094ff7488a94f664c;
+&a238fd7175412990d564d2243f002cb60;
+&a33675e17a691bb06cca4bdbd27faaeef;
+&a084d649e19d717cf8643746086c2f14d;
+&abad45a4d849e6eabad045a6e8e96911e;
+&afab111e4032b54ff4994f22686349bb6;
+&ae69ed1e699b10aea433e4e78c2fc2af9;
+&ad5757d5dec0e8a8588dd774d6ceb00a4;
+&a3966f89e376a0df32d5475fc5dce2dfb;
+&a9c67266216fa7df6a0c1f5b78b4a5c98;
+&a85a259ecf4931c4c26b7489bc17c940d;
+&aee0321a10d702e87b08ce78104638b96;
+&acd21f05338b142a33f9cd4b67681a2c1;
+&afe5c47efa3d5d517f4d731a54a3cc238;
+&a719dd88c9612fca7cca1b852e7ae8176;
+&ae028c0f935906330ef086e1268e159e5;
+&aa322d8897c892cb2c29eaccdfe99b919;
+&a03914462f84299b2709a7194cbc758ff;
+&aebb8f038f28c07eff23e5372deaf68d8;
+&a06935bae5f2fd2dd0f552975c56e05c8;
+&a8fea41c41777f2ee4f22565ce5e3c04d;
+&ab8a3fff0b51bf23efbaa6508db2fe35a;
+&a873c87a3293acf1e4043592b15a867fb;
+&a5322b79b7eb8835fa801378277bbbabd;
+&acac0d55832350abf5adb75121a6848b3;
+</part>
+</book>

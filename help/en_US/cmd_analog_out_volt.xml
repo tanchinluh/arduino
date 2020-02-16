@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cmd_analog_out_volt.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cmd_analog_out_volt" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cmd_analog_out_volt</refname>
+    <refpurpose>Command to sent out analog signal to a connected Arduino board</refpurpose>
+  </refnamediv>
+
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+        <varlistentry>
+            <term>h :</term>
+            <listitem><para> Board pointer, to indicate which board to use to differentiate one board from another</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>pin_no :</term>
+            <listitem><para> Digital pin with ~ to sent the signal</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>val :</term>
+            <listitem><para> The value in volt (0-5) to be sent to the digital pins with ~ sign.</para></listitem>
+        </varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+The analog outputs of the Arduino Uno is available at the pins 3,5,6,9,10 and 11, while on the Mega board, the outputs are on pins 1-13 and 44-46.
+It is a bit misleading to use the term "analog output", because in order to generate this output while minimizing energy losses,
+the Arduino uses PWM (Pulse Width Modulation) available on these ports. By varying the duty cycle of the PWM is altered the average
+voltage across the component connected to this port, which has the effect of having a analog output voltage.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+h = open_serial(1,9,115200)
+cmd_analog_out_volt(h,9,1.2)
+close_serial(h)
+
+   ]]></programlisting>
+</refsection>
+
+<refsection role="see also">
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cmd_analog_out">cmd_analog_out</link></member>
+   <member><link linkend="cmd_arduino_a_control">cmd_arduino_a_control</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Bruno JOFRET, Tan C.L.</member>
+   </simplelist>
+</refsection>
+</refentry>

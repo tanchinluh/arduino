@@ -13,13 +13,13 @@
 function subdemolist = demo_gateway()
   demopath = get_absolute_file_path("exemples_livret.dem.gateway.sce");
 
-  subdemolist = ["Exemple 1", "arduino2.dem.sce" ;
-                 "Exemple 2", "arduino3.dem.sce" ;
-                 "Exemple 3", "arduino4.dem.sce" ;
-                 "Exemple 4", "arduino5.dem.sce" ;
-                 "Exemple 5", "arduino7.dem.sce" ;
-                 "Exemple 6", "arduino8.dem.sce" ;
-                 "Exemple 7", "arduino9.dem.sce" ;
+  subdemolist = ["Example 1", "arduino2.dem.sce" ;
+                 "Example 2", "arduino3.dem.sce" ;
+                 "Example 3", "arduino4.dem.sce" ;
+                 "Example 4", "arduino5.dem.sce" ;
+                 "Example 5", "arduino7.dem.sce" ;
+                 "Example 6", "arduino8.dem.sce" ;
+                 "Example 7", "arduino9.dem.sce" ;
                 ];
 
   subdemolist(:,2) = demopath + subdemolist(:,2);

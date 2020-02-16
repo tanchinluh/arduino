@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:id="SERVO_WRITE_SB">
+  <refnamediv>
+    <refname>SERVO_WRITE_SB</refname>
+    <refpurpose>Drive a servomotor by sending command of the angle from 0 to 180°</refpurpose>
+  </refnamediv>
+  <refsection>
+    <title>Block Screenshot</title>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="../../images/gif/SERVO_WRITE_SB.gif" align="center" valign="middle"/>
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+  </refsection>
+  <refsection id="Contents_SERVO_WRITE_SB">
+    <title>Contents</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="Palette_SERVO_WRITE_SB">Palette</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Description_SERVO_WRITE_SB">Description</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Dialogbox_SERVO_WRITE_SB">Dialog box</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Example1_SERVO_WRITE_SB">Example 1</xref>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="Seealso_SERVO_WRITE_SB">See Also</xref>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+  </refsection>
+  <refsection id="Palette_SERVO_WRITE_SB">
+    <title>Palette</title>
+    Arduino
+  </refsection>
+  <refsection id="Description_SERVO_WRITE_SB">
+    <title>Description</title>
+    <para> A servomotor is an  rotary actuator consist of an electric motor, gears, a potentiometer and an analogue or digital electronics for control. The servomotor usualy used for a position control application (or speed for continuous rotation servos).  </para>
+    <para> The user must give the command of the position setpoint or desired speed. This command is sent to the actuator in pulses spaced by 10 to 20 ms. The coding of these pulses is made such that a pulse of 1.5 ms corresponding to the centered position (rest), a pulse of 1 ms corresponds to an angle of 90° in the anticlockwise direction, and a pulse 2 ms corresponds to an angle of 90° clockwise. All other pulse widths give intermediate values​​.  </para>
+    <para> A servomotor for continuous rotation, the pulse width control the rotational speed and the direction.  </para>
+    <para> It is recommended to use a voltage regulator to power the servomotor instead of using the Arduino board power. </para>
+    <para> For simplicity, the block takes an input commnad in degrees from 0 to 180.  </para>
+    <para> Two actuators can be controlled with this toolbox. (modified version of 3 motors available) </para>
+
+    <para> Do note that the sampling rate is at least 10 ms for this block. </para>
+
+  </refsection>
+  <refsection id="Dialogbox_SERVO_WRITE_SB">
+    <title>Dialog box</title>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/SERVO_SB_dialogbox.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+    <para> The block is used to set the number of servomotor to be driven. Servo 1 corresponds to port 9 on Arduino and Servo 2 corresponds to port 10 on Arduino. </para>
+    <para> The card number can not be changed at this time. </para>
+
+  </refsection>
+  <refsection id="Example1_SERVO_WRITE_SB">
+    <title>Example 1</title>
+    <para> The example below shows the use of the servomotor block which position is controlled by the potentiometer at analog port 0 . </para>
+    <para> A gain block is used to convert the 10 bits analog input signal from the potentiometer to the range of 0 to 180 to which specify the desired position of the servomotor. </para>
+    <inlinemediaobject>
+      <imageobject>
+        <imagedata fileref="../images/SERVO_SB_exemple.png" align="center"/>
+      </imageobject>
+    </inlinemediaobject>
+
+  </refsection>
+  <refsection id="Seealso_SERVO_WRITE_SB">
+    <title>See Also</title>
+    <simplelist>
+      <member>
+        <link linkend="DCMOTOR_SB">DCMOTOR_SB</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>

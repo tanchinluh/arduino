@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cmd_analog_in.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cmd_analog_in" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cmd_analog_in</refname>
+    <refpurpose>Command to read in analog signal from a connected Arduino board</refpurpose>
+  </refnamediv>
+
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+        <varlistentry>
+            <term>h :</term>
+            <listitem><para> Board pointer, to indicate which board to use to differentiate one board from another</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>pin_no :</term>
+            <listitem><para> Analog pin to measure the signal</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>val :</term>
+            <listitem><para> Reading in the range of 0-1023 to to indicate the input voltage from 0-5V</para></listitem>
+        </varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Arduino UNO board has 6 analog input ports (A0 to A5), the Arduino Mega board has 16 analog input ports (A0 to A15).
+The 10 bits channels convert the analog input from 0 to 5 volts, to a digital value between 0 and 1023.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+h = open_serial(1,9,115200)
+val = cmd_analog_in(h,9)
+close_serial(h)
+
+   ]]></programlisting>
+</refsection>
+
+<refsection role="see also">
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="cmd_analog_in_volt">cmd_analog_in_volt</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Bruno JOFRET, Tan C.L.</member>
+   </simplelist>
+</refsection>
+</refentry>

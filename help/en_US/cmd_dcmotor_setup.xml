@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cmd_dcmotor_setup.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cmd_dcmotor_setup" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cmd_dcmotor_setup</refname>
+    <refpurpose>Command to setup pins to control DC motor</refpurpose>
+  </refnamediv>
+
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+        <varlistentry>
+            <term>h :</term>
+            <listitem><para> Board pointer, to indicate which board to use to differentiate one board from another</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>driver_type :</term>
+            <listitem><para> 1=Motorshield Rev3, 2=L298, 3=L293</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>motor_no :</term>
+            <listitem><para> ID used to identify motor to be connected</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>pin_no_1 :</term>
+            <listitem><para> Depends on the driver type, choose the correct pins for the purpose. For example, using L293 require PWM pin to be selected.</para></listitem>
+        </varlistentry>
+        <varlistentry>
+            <term>pin_no_2 :</term>
+            <listitem><para> Depends on the driver type, choose the correct pins for the purpose. For example, using L293 require PWM pin to be selected.</para></listitem>
+        </varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Arduino board does not deliver enough power, so it is necessary to use a H-bridge circuit/IC to control the motor. There are several types of H-bridge IC that do not all operate on the same principle. For example, the L298 requires the use of a PWM signal with current sense. The L293 uses two PWM to set the speed and direction. Ready-to-use Shields are also available.
+   </para>
+   <para>
+Remember that the PWM is 8-bit (0 to 255). The input of the block could accept any value, but it would saturate at +- 255.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+h = open_serial(1,9,115200)
+cmd_dcmotor_setup(h,3,1,9,10)  // Setup DC motor of type 3 (L293), motor 1, pin 9 and 10
+cmd_dcmotor_run(h,1,255)
+sleep(1000)
+cmd_dcmotor_run(h,1,-255)
+sleep(1000)
+cmd_dcmotor_release(h,1)
+close_serial(h)
+   ]]></programlisting>
+</refsection>
+</refentry>

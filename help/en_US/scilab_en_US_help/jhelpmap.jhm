@@ -2,7 +2,7 @@
 <!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN" "http://java.sun.com/products/javahelp/map_1_0.dtd">
 <map version="1.0">
 <mapID target="index" url="index.html"/>
-<mapID target="section_2f66470322261a83bdfdd7da4dc8b5a8" url="section_2f66470322261a83bdfdd7da4dc8b5a8.html"/>
+<mapID target="section_c5ea22a12057b949858a9c5fa7bfad82" url="section_c5ea22a12057b949858a9c5fa7bfad82.html"/>
 <mapID target="ANALOG_READ_SB" url="ANALOG_READ_SB.html"/>
 <mapID target="Contents_ANALOG_READ_SB" url="ANALOG_READ_SB.html#Contents_ANALOG_READ_SB"/>
 <mapID target="Palette_ANALOG_READ_SB" url="ANALOG_READ_SB.html#Palette_ANALOG_READ_SB"/>
@@ -74,4 +74,21 @@
 <mapID target="Dialogbox_TIME_SAMPLE" url="TIME_SAMPLE.html#Dialogbox_TIME_SAMPLE"/>
 <mapID target="Example1_TIME_SAMPLE" url="TIME_SAMPLE.html#Example1_TIME_SAMPLE"/>
 <mapID target="Seealso_TIME_SAMPLE" url="TIME_SAMPLE.html#Seealso_TIME_SAMPLE"/>
+<mapID target="close_serial" url="close_serial.html"/>
+<mapID target="cmd_analog_in" url="cmd_analog_in.html"/>
+<mapID target="cmd_analog_in_volt" url="cmd_analog_in_volt.html"/>
+<mapID target="cmd_analog_out" url="cmd_analog_out.html"/>
+<mapID target="cmd_analog_out_volt" url="cmd_analog_out_volt.html"/>
+<mapID target="cmd_arduino_a_control" url="cmd_arduino_a_control.html"/>
+<mapID target="cmd_arduino_d_control" url="cmd_arduino_d_control.html"/>
+<mapID target="cmd_arduino_meter" url="cmd_arduino_meter.html"/>
+<mapID target="cmd_dcmotor_release" url="cmd_dcmotor_release.html"/>
+<mapID target="cmd_dcmotor_run" url="cmd_dcmotor_run.html"/>
+<mapID target="cmd_dcmotor_setup" url="cmd_dcmotor_setup.html"/>
+<mapID target="cmd_digital_in" url="cmd_digital_in.html"/>
+<mapID target="cmd_digital_out" url="cmd_digital_out.html"/>
+<mapID target="cmd_servo_attach" url="cmd_servo_attach.html"/>
+<mapID target="cmd_servo_detach" url="cmd_servo_detach.html"/>
+<mapID target="cmd_servo_move" url="cmd_servo_move.html"/>
+<mapID target="open_serial" url="open_serial.html"/>
 </map>
