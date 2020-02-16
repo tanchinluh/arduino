@@ -62,7 +62,7 @@ Description:
  CHANGES 1.7 =&gt; 1.8
  ====================  
   BUGS FIXED
-  * Fixed 2206 Problem with Servo_Write Block
+  * Fixed issue of extra figure popup when demo figure is on
 
   NEW FEATURES
   * Add command lines control support for common interface.

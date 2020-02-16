@@ -4,7 +4,8 @@ Arduino toolbox for Scilab
 
 v. 1.8 (2020-02-16) / chinluh.tan@bytecode-asia.com
 BUGS FIXED
-* Fixed 2206 Problem with Servo_Write Block
+* Fixed issue of extra figure popup when demo figure is on
+
 NEW FEATURES
 * Add command lines control support for common interface.
 * Translate help pages in english
