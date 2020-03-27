@@ -20,23 +20,31 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
     for i = 1:size(scs_m.objs)
         curObj= scs_m.objs(i);
         if (typeof(curObj) == "Block" & curObj.gui == "ARDUINO_SETUP")
-            presence_arduino=%t   
+            presence_arduino=%t
             scs_m.props.tol(5)=1;
 
             try
                 //closeserial(port_com)
-                // This shall be replaced with a function to close all ports. 
+                // This shall be replaced with a function to close all ports.
                 //close_serial(1)
-                
+
                 sleep(1000)
                 handle_num=scs_m.objs(i).model.rpar(1) // 20191014: CL: Add to get the handle number to differentiate the boards.
-                port_com_arduino=scs_m.objs(i).model.rpar(2)
+                port_com_arduino=scs_m.objs(i).model.opar(1)
                 //port_com=openserial(port_com_arduino,"115200,n,8,1"); //ouverture du port com de la carte i
                 //ok=open_serial(1,port_com_arduino,115200); //ouverture du port COM de l'arduino i
                 handle_str = 'h'+string(handle_num);
-                cmd_str = handle_str + "=open_serial(handle_num,port_com_arduino,115200)"; // Allow multiple boards
+                cmd_str = handle_str + "=open_serial(" + string(handle_num) + ",";
+                if ~isnum(port_com_arduino) then
+                    cmd_str = cmd_str + '""';
+                end
+                cmd_str = cmd_str + string(port_com_arduino);
+                if ~isnum(port_com_arduino) then
+                    cmd_str = cmd_str + '""';
+                end
+                cmd_str = cmd_str + ",115200)"; // Allow multiple boards
                 execstr(cmd_str);
-                
+
                 if type(evstr(handle_str))~=128 then    // Check is a Scilab Pointer
                     funcprot(old_funcprot)
                     //messagebox("Mauvais port de communication.")
@@ -46,23 +54,23 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
                 end
                 disp("communication with card "+string(handle_num)+" on com "+string(port_com_arduino)+" is ok");
                 sleep(1000);
-                
+
                 // to discard welcome messages
                 [a,b,c]=status_serial(evstr(handle_str));
                 values=read_serial(evstr(handle_str),b);
-                    
+
                 word='R3';
                 write_serial(evstr(handle_str),word,2);
                 tic()
                 [a,b,c]=status_serial(evstr(handle_str));
                 tini=toc()
                 tcur=0
-                while (b<2 & tcur<2) 
+                while (b<2 & tcur<2)
                     [a,b,c]=status_serial(evstr(handle_str));
                     tcur=toc()-tini
                 end
                 values=read_serial(evstr(handle_str),2);
-                
+
                 if tcur>=2 | grep(ascii(values), "v5")==[]
                     funcprot(old_funcprot)
                     messagebox("You have to load the toolbox_arduino_v5-x.ino sketch with the arduino software in the Arduino board")
@@ -86,7 +94,7 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
             display_now=evstr(scs_m.objs(i).graphics.exprs(3));
         end
         if (typeof(curObj) == "Block" & curObj.gui == "ARDUINO_SCOPE")
-            presence_scope=%t 
+            presence_scope=%t
             list_scope($+1)=i;
         end
     end
@@ -122,7 +130,7 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
                         no=no+1;
                     elseif (typeof(list_obj(j)) == "Block" & list_obj(j).gui == "SampleCLK") then //on modifie le pas de temps
                         scs_m.objs(list_scope(i)).model.rpar.objs(j).model.rpar(1)=sample_time;
-                        scs_m.objs(list_scope(i)).model.rpar.objs(j).graphics.exprs(1)=string(sample_time);                        
+                        scs_m.objs(list_scope(i)).model.rpar.objs(j).graphics.exprs(1)=string(sample_time);
                     end
                 end
             else
@@ -130,11 +138,11 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
                 for j=1:size(list_obj)
                     if (typeof(list_obj(j)) == "Block" & list_obj(j).gui == "TOWS_c") then //on affecte un nom pour le stockage dans scilab
                         scs_m.objs(list_scope(i)).model.rpar.objs(j).graphics.exprs=[string(num_pts);"o"+string(no+nb_total_outputs);"0"];
-                        scs_m.objs(list_scope(i)).model.rpar.objs(j).model.ipar=[num_pts;2;24;no+nb_total_outputs]; 
+                        scs_m.objs(list_scope(i)).model.rpar.objs(j).model.ipar=[num_pts;2;24;no+nb_total_outputs];
                         no=no+1;
                     elseif (typeof(list_obj(j)) == "Block" & list_obj(j).gui == "SampleCLK") then //on modifie le pas de temps
-                        scs_m.objs(list_scope(i)).model.rpar.objs(j).model.rpar(1)=sample_time;          
-                        scs_m.objs(list_scope(i)).model.rpar.objs(j).graphics.exprs(1)=string(sample_time);                                                
+                        scs_m.objs(list_scope(i)).model.rpar.objs(j).model.rpar(1)=sample_time;
+                        scs_m.objs(list_scope(i)).model.rpar.objs(j).graphics.exprs(1)=string(sample_time);
                     end
                 end
 
@@ -142,7 +150,7 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
 
             nb_total_outputs=nb_total_outputs+nb_outputs;
         end
-    end 
+    end
 
     continueSimulation = %t;
 //    disp("Fin pre_simulate arduino")
