@@ -43,7 +43,10 @@ function []=init_arduino(scs_m, needcompile)
     // Passe en revue tous les blocs pour relever dans des tableaux chacun des types de blocs
     for i=1:nombre_blocs
         if objs(i).gui=="ARDUINO_SETUP" then nb_arduino=nb_arduino+1;
-            port_com_arduino(objs(i).model.rpar(1))=objs(i).model.rpar(2); //on stocke le numero du com de la carte numerotée dans le bloc
+            port_com_arduino(objs(i).model.rpar(1))=objs(i).model.opar(1); //on stocke le numero du com de la carte numerotée dans le bloc
+            if isnum(port_com_arduino(i)) then
+                port_com_arduino(i) = strtod(port_com_arduino(i));
+            end
         end
         //pour chaque bloc on releve le pin indiqué et on le stocke dans la catégorie correspondante
         rep=find(objs(i).gui==list_arduino_gui);
@@ -152,23 +155,3 @@ function []=init_arduino(scs_m, needcompile)
 
     disp("Initialization done")
 endfunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

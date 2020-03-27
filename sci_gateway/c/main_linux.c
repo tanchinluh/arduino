@@ -109,13 +109,23 @@ int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 	scilab_getDouble(env, in[0], &handle);
 	int int_handle = (int)handle;
 
-	//in[1] : Double
+	//in[1] : Double or String
+  char portname[32];
 	if (scilab_isDouble(env, in[1]) == 0 || scilab_isScalar(env, in[1]) == 0)
 	{
-		Scierror(77, "Wrong type for input argument %d: A double expected.\n", 2);
-		return -1;
-	}
-	scilab_getDouble(env, in[1], &port);
+    if (scilab_isString(env, in[1]) == 0 || scilab_isScalar(env, in[1]) == 0)
+    {
+  		Scierror(77, "Wrong type for input argument %d: A double or string expected.\n", 2);
+	  	return -1;
+    }
+    wchar_t* str = 0;
+    scilab_getString(env, in[1], &str);
+    wcstombs(portname, str, 2*sizeof(portname-1));
+
+	}else{
+  	scilab_getDouble(env, in[1], &port);
+    sprintf(portname, "/dev/ttyACM%d", (int)port);
+  }
 
 	//in[2] : Double
 	if (scilab_isDouble(env, in[2]) == 0 || scilab_isScalar(env, in[2]) == 0)
@@ -125,18 +135,6 @@ int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 	}
 	scilab_getDouble(env, in[2], &baudrate);
 
-	char *portname;
-		switch((int)port){
-		case 0: portname = "//dev/ttyACM0";break;
-		case 1: portname = "//dev/ttyACM1";break;
-                case 2: portname = "//dev/ttyACM2";break;
-                case 3: portname = "//dev/ttyACM3";break;
-                case 4: portname = "//dev/ttyACM4";break;
-                case 5: portname = "//dev/ttyACM5";break;
-                case 6: portname = "//dev/ttyACM6";break;
-                case 7: portname = "//dev/ttyACM7";break;
-		default : return;
-	}
 	*OK = 0;
 	handleport[int_handle] = open (portname, O_RDWR | O_NOCTTY | O_SYNC);
 	//fd = open (portname, O_RDWR | O_NOCTTY); //srikant
@@ -371,5 +369,3 @@ int read_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 	return 0;
 
 }
-
-
