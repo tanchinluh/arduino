@@ -30,7 +30,7 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
                 
                 sleep(1000)
                 handle_num=scs_m.objs(i).model.rpar(1) // 20191014: CL: Add to get the handle number to differentiate the boards.
-                port_com_arduino=scs_m.objs(i).model.rpar(2)
+                port_com_arduino=scs_m.objs(i).model.opar(1)
                 //port_com=openserial(port_com_arduino,"115200,n,8,1"); //ouverture du port com de la carte i
                 //ok=open_serial(1,port_com_arduino,115200); //ouverture du port COM de l'arduino i
                 handle_str = 'h'+string(handle_num);
@@ -75,9 +75,11 @@ function scs_m=ARDUINO_pre_simulate(scs_m, needcompile)
                 //write_serial(1,ascii(201)+ascii(201),2); // utilité ?
             catch
                 funcprot(old_funcprot)
+                disp(lasterror())
                 close_serial(evstr(handle_str))
                 // error('Mauvais port de communication.')
                 error('Bad communication port.');
+                return
             end
         end
         if (typeof(curObj) == "Block" & curObj.gui == "TIME_SAMPLE") then
