@@ -21,7 +21,7 @@ function []=init_arduino(scs_m, needcompile)
     nombre_blocs=0;    //Nombre de blocs dans le diagramme
     nombre_liens=0;    //Nombre de lien dans le diagramme
     nb_arduino=0; //nombre de cartes arduino
-    port_com_arduino=[];    //numero des ports com associes a chaque carte arduino
+    port_com_arduino=list();    //numero des ports com associes a chaque carte arduino
 
     //liste des types de blocs arduino
     list_arduino_gui=["ARDUINO_DIGITAL_WRITE","ARDUINO_DIGITAL_READ","ARDUINO_ANALOG_WRITE","ARDUINO_ANALOG_READ","ARDUINO_DCMOTOR","ARDUINO_SERVO_WRITE","ARDUINO_SERVO_READ","ARDUINO_STEPPER","ARDUINO_ENCODER"];
@@ -43,7 +43,7 @@ function []=init_arduino(scs_m, needcompile)
     // Passe en revue tous les blocs pour relever dans des tableaux chacun des types de blocs
     for i=1:nombre_blocs
         if objs(i).gui=="ARDUINO_SETUP" then nb_arduino=nb_arduino+1;
-            port_com_arduino(objs(i).model.rpar(1))=objs(i).model.rpar(2); //on stocke le numero du com de la carte numerotée dans le bloc
+            port_com_arduino(objs(i).model.rpar(1))=objs(i).model.opar(1); //on stocke le numero du com de la carte numerotée dans le bloc
         end
         //pour chaque bloc on releve le pin indiqué et on le stocke dans la catégorie correspondante
         rep=find(objs(i).gui==list_arduino_gui);
@@ -66,6 +66,8 @@ function []=init_arduino(scs_m, needcompile)
     catch
         messagebox("Wrong communication port")
         error("Wrong communication port")
+        disp(lasterror())
+        return
     end
     //configuration des Pin Pout
     try

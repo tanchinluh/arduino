@@ -5,89 +5,105 @@ purpose: serial librairie for Scilab
 Alain Caignot
 **************************************************/
 
+#include <windows.h>
+#include <string.h>
+#include <stdio.h>
+
 #include "api_scilab.h"
 #include "Scierror.h"
 #include "sciprint.h"
-#include "BOOL.h"
-#include "localization.h"
-#include <locale.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include "os_string.h"
-#include "sci_malloc.h"
-//#ifdef _WIN32
-#include <windows.h>
-//#else
-//#include <unistd.h>
-//#endif
 
-#define MAXPORTS 5 //used to opened several COM to have several Arduino card
-int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out);
-int close_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out);
-int write_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out);
-int status_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out);
-int read_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out);
+static LPVOID GetLastErrorString(void)
+{
+	LPVOID *lpLpMsgBuf = NULL;
 
-// Function to open port COM
-//__declspec(dllexport) void __stdcall open_serial(int *handle,int *port, int *baudrate, int *OK){
+	FormatMessage(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		FORMAT_MESSAGE_FROM_SYSTEM |
+		FORMAT_MESSAGE_IGNORE_INSERTS,
+		NULL,
+		GetLastError(),
+		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		(LPTSTR) &lpLpMsgBuf,
+		0,
+		NULL);
+
+	return lpLpMsgBuf;
+}
+
+static scilabStatus GetFullPortName(char *name, size_t maxlen)
+{
+	char *number = name;
+	char *endp;
+
+	if (strncmp(name, "COM", 3) == 0)
+		number = name + 3;
+
+	long n = strtol(number, &endp, 10);
+	if (n < 1 || n > 255 || name == endp || *endp != '\0')
+		return STATUS_ERROR;
+
+	int len = snprintf(name, maxlen, "\\\\.\\COM%d", n);
+	if (len >= maxlen)
+		return STATUS_ERROR;
+
+	return STATUS_OK;
+}
+
 int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out)
 {
-	static HANDLE handleport[MAXPORTS];
 	DCB dcbSerialParams;
-	DWORD dwBytesWrite = 0;
-	DWORD dwBytesRead = 10;
 	COMMTIMEOUTS timeouts = { 0 };
-	double handle = 0;
-	double port = 0;
-	double baudrate = 0;
+	wchar_t *in1;
+	double in2;
+	void *hPort;
+	int baudrate;
+
+	(void)nopt;
+	(void)opt;
 
 	// Check the number of input arguments
 	if (nin != 3)
 	{
 		Scierror(77, "Wrong number of input argument(s): %d expected.\n", 3);
-		return -1;
+		return STATUS_ERROR;
 	}
 
 	// Check the number of output arguments
 	if (nout != 1)
 	{
 		Scierror(77, "Wrong number of output arguments: %d expected.\n", 1);
-		return -1;
+		return STATUS_ERROR;
 	}
 
-	// in[0] : Double
-	if (scilab_isDouble(env, in[0]) == 0 || scilab_isScalar(env, in[0]) == 0)
+	//in[1] : String
+	if (scilab_isString(env, in[1]) == 0 || scilab_isScalar(env, in[1]) == 0)
 	{
-		Scierror(77, "Wrong type for input argument %d: A double expected.\n", 1);
-		return -1;
+		Scierror(77, "Wrong type for input argument %d: A string expected.\n", 2);
+		return STATUS_ERROR;
 	}
-	scilab_getDouble(env, in[0], &handle);
-	int int_handle = (int)handle;
-
-	//in[1] : Double
-	if (scilab_isDouble(env, in[1]) == 0 || scilab_isScalar(env, in[1]) == 0)
-	{
-		Scierror(77, "Wrong type for input argument %d: A double expected.\n", 2);
-		return -1;
-	}
-	scilab_getDouble(env, in[1], &port);
+	scilab_getString(env, in[1], &in1);
 
 	//in[2] : Double
 	if (scilab_isDouble(env, in[2]) == 0 || scilab_isScalar(env, in[2]) == 0)
 	{
 		Scierror(77, "Wrong type for input argument %f: A double expected.\n", 3);
-		return -1;
+		return STATUS_ERROR;
 	}
-	scilab_getDouble(env, in[2], &baudrate);
+	scilab_getDouble(env, in[2], &in2);
+	baudrate = (int)(in2 + 0.5);
 
-	// Consider to replace itoa to a standard way, and to allow COM port more than 9
-	//char tmp[5] = "COM5";
-	char tmp[15] = "\\\\.\\COM5";
-	itoa(port, &tmp[7], 10);
+	char portname[100];
+	wcstombs(portname, in1, sizeof(portname));
+
+	if (GetFullPortName(portname, sizeof(portname)) != STATUS_OK)
+	{
+		Scierror(77, "Invalid port name '%s'. Expected a number in range [1,255] with optional COM prefix", portname);
+		return STATUS_ERROR;
+	}
 
 	// Create Serial port handle
-	handleport[int_handle] = CreateFile(tmp,
+	hPort = CreateFile(portname,
 		GENERIC_READ | GENERIC_WRITE,
 		0,//FILE_SHARE_READ | FILE_SHARE_WRITE //to test : recuperation COM port if simulation crashes
 		0,
@@ -95,209 +111,257 @@ int open_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 		FILE_ATTRIBUTE_NORMAL,
 		0);
 
+	//sciprint("Open %s at %d bps %p\n", portname, baudrate, hPort);
+
 	// Errors checking
-	if (handleport[int_handle] == INVALID_HANDLE_VALUE) {
-		if (GetLastError() == ERROR_FILE_NOT_FOUND) {
-			//serial port does not exist. Inform user.
-			Scierror(999, "Serial port COM%.0f does not exist.\n", port);
-			return -1;
-		}
-		//some other error occurred. Inform user.
-		Scierror(999, "Unknown Error.\n");
-		return -1;
+	if (hPort == INVALID_HANDLE_VALUE)
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999, "Failed to open %s: %s\n", portname, lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
 	}
 
 	dcbSerialParams.DCBlength = sizeof(dcbSerialParams);
-	if (!GetCommState(handleport[int_handle], &dcbSerialParams)) {
-		//error getting state
-		Scierror(999, "Error getting state from %s.\n", tmp);
-		return -1;
+	if (!GetCommState(hPort, &dcbSerialParams))
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999, "Error getting state: %s\n", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
 	}
 	dcbSerialParams.BaudRate = baudrate;
 	dcbSerialParams.ByteSize = 8;
 	dcbSerialParams.StopBits = ONESTOPBIT;
 	dcbSerialParams.Parity = NOPARITY;
-	if (!SetCommState(handleport[int_handle], &dcbSerialParams)) {
-		//error setting serial port state
-		Scierror(999, "Error setting state from %s.\n", tmp);
-		return -1;
+	dcbSerialParams.fOutxCtsFlow = FALSE;
+	dcbSerialParams.fOutxDsrFlow = FALSE;
+	dcbSerialParams.fDtrControl = DTR_CONTROL_DISABLE;
+	dcbSerialParams.fRtsControl = RTS_CONTROL_DISABLE;
+	dcbSerialParams.fOutX = FALSE;
+	dcbSerialParams.fInX = FALSE;
+	if (!SetCommState(hPort, &dcbSerialParams))
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999, "Error setting state with error\n", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
 	}
 
-	//  
+	//
 	timeouts.ReadIntervalTimeout = 50;
 	timeouts.ReadTotalTimeoutConstant = 50;
 	timeouts.ReadTotalTimeoutMultiplier = 1;
 	timeouts.WriteTotalTimeoutConstant = 50;
 	timeouts.WriteTotalTimeoutMultiplier = 1;
-	if (!SetCommTimeouts(handleport[int_handle], &timeouts)) {
-		//error occureed. Inform user
-		Scierror(999, "Unknown Error.\n");
-		return -1;
+	if (!SetCommTimeouts(hPort, &timeouts))
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999, "Failed to configure timeouts: %s\n", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
 	}
 
-	// Create output pointer if COM port open successfully
-	void* val;
-	val = &handleport[int_handle];
-	sciprint("Serial port COM%.0f opened SUCCESSFULLY.\n", port);
-	out[0] = scilab_createPointer(env, val);
+	if (!EscapeCommFunction(hPort, CLRBREAK) ||
+		!EscapeCommFunction(hPort, CLRDTR) ||
+		!EscapeCommFunction(hPort, CLRRTS))
+	{
+		// Failed to clear BREAK, DTR and RTS
+		char *lpMsg = GetLastErrorString();
+		Scierror(999, "Failed to reset signals with error\n", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
+	}
 
-	Sleep(500);
-	return 0;
+	//sciprint("Serial port %s opened SUCCESSFULLY.\n", portname);
+	out[0] = scilab_createPointer(env, hPort);
+
+	Sleep(1000);
+	return STATUS_OK;
 }
 
+int close_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out)
+{
+	void *hPort;
 
-////__declspec (dllexport) void __stdcall close_serial(int *handle, int *OK) {
-int close_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out) {
-
-	int res;
-	int *OK = 0;
-	void const** hport;
+	(void)nopt;
+	(void)opt;
+	(void)out;
 
 	// Check number of input arguments
 	if (nin != 1)
 	{
 		Scierror(77, "Wrong number of input argument(s): %d expected.\n", 1);
-		return -1;
+		return STATUS_ERROR;
 	}
 
-	// in[0] : pointer 
+	// Check the number of output arguments
+	if (nout != 0)
+	{
+		Scierror(77, "Wrong number of output arguments: %d expected.\n", 0);
+		return STATUS_ERROR;
+	}
+
+	// in[0] : pointer
 	if (scilab_isPointer(env, in[0]) == 0)
 	{
 		Scierror(999, "Wrong type for input argument %d: A pointer expected.\n", 1);
-		return -1;
+		return STATUS_ERROR;
 	}
-	scilab_getPointer(env, in[0], &hport);
+	scilab_getPointer(env, in[0], &hPort);
 
-	res = CloseHandle(*hport);
+	//sciprint("Close port %p\n", hPort);
 
 	// Check whether the port is closed successfully.
-	if (res == 1) {
-		sciprint("Serial port closed SUCCESSFULLY.\n");
+	if (!CloseHandle(hPort))
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999, "Failed to close the port: %s\n", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
 	}
-	else {
-		sciprint("Serial port closed FAIL.\n");
-	}
-	
-	return 0;
 
+	return STATUS_OK;
 }
 
-//__declspec (dllexport) void __stdcall write_serial(int *handle, char str[],int *size, int *OK){
-int write_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out) {
+int write_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out)
+{
+	DWORD dwBytesWrite;
+	void *hPort;
+	wchar_t* in1;
+	double in2;
+	DWORD size;
 
-	DWORD dwBytesWrite = 0;
-	int res;
-	void const** hport;
-	double size = 0;
-	wchar_t* str = 0;
-	wchar_t* in1 = 0;
-
-	int *OK = malloc(sizeof(int));
-	*OK = 0;
+	(void)nopt;
+	(void)opt;
+	(void)out;
 
 	// Check number of input arguments
 	if (nin != 3)
 	{
 		Scierror(77, "Wrong number of input argument(s): %d expected.\n", 3);
-		*OK = -1;
-		return *OK;
+		return STATUS_ERROR;
 	}
 
-	// in[0] : pointer 
+	// Check the number of output arguments
+	if (nout != 0)
+	{
+		Scierror(77, "Wrong number of output arguments: %d expected.\n", 0);
+		return STATUS_ERROR;
+	}
+
+	// in[0] : pointer
 	if (scilab_isPointer(env, in[0]) == 0)
 	{
 		Scierror(999, "Wrong type for input argument %d: A pointer expected.\n", 1);
-		*OK = -1;
-		return *OK;
+		return STATUS_ERROR;
 	}
-	scilab_getPointer(env, in[0], &hport);
+	scilab_getPointer(env, in[0], &hPort);
 
-	// in[1] : string 
+	// in[1] : string
 	if (scilab_isString(env, in[1]) == 0 || scilab_isScalar(env, in[1]) == 0)
 	{
 		Scierror(999, "Wrong type for input argument %d: A String expected.\n", 2);
-		*OK = -1;
-		return *OK;
+		return STATUS_ERROR;
 	}
-	scilab_getString(env, in[1], &str);
-	
+	scilab_getString(env, in[1], &in1);
+
 	// in[2] : Double
 	if (scilab_isDouble(env, in[2]) == 0 || scilab_isScalar(env, in[2]) == 0)
 	{
 		Scierror(999, "Wrong type for input argument %d: A double expected.\n", 3);
-		*OK = -1;
-		return *OK;
+		return STATUS_ERROR;
 	}
-	scilab_getDouble(env, in[2], &size);
+	scilab_getDouble(env, in[2], &in2);
+	size = (DWORD)(in2 + 0.5);
+
+	//sciprint("Write %d bytes into port %p\n", size, hPort);
 
 	// Convert input string from wchar to char
-	char ch[100];	
-	wcstombs(ch, str, size);
-	res = WriteFile(*hport, ch, size, &dwBytesWrite, NULL);
-	out[0] = scilab_createDouble(env, (double)*OK);
+	char ch[100];
+	wcstombs(ch, in1, sizeof(ch));
 
-	free(OK);
-	return 0;
+	if (!WriteFile(hPort, ch, size, &dwBytesWrite, NULL))
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999,"Failed to write into port: %s", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
+	}
 
+	if (size != dwBytesWrite)
+	{
+		Scierror(999,"Unexpected number of bytes written: expected %d but written %d", size, dwBytesWrite);
+		return STATUS_ERROR;
+	}
+
+	return STATUS_OK;
 }
 
-//__declspec (dllexport) void __stdcall status_serial(int *handle, int *OK,int *nbread, int *nbwrite){
-int status_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out) {
-	
+int status_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out)
+{
 	DWORD dwErrorFlags;
 	COMSTAT ComStat;
-	int res;
-	void const** hport;
-	int *nbread = malloc(sizeof(int));
-	int *nbwrite = malloc(sizeof(int));
-	int *OK = malloc(sizeof(int));
-	*OK = 0;
+	void *hPort;
+	int nbread;
+	int nbwrite;
+
+	(void)nopt;
+	(void)opt;
 
 	// Check number of input arguments
 	if (nin != 1)
 	{
 		Scierror(77, "Wrong number of input argument(s): %d expected.\n", 1);
-		*OK = -1;
-		return *OK;
+		return STATUS_ERROR;
 	}
 
-	// in[0] : pointer 
+	// Check the number of output arguments
+	if (nout != 3)
+	{
+		Scierror(77, "Wrong number of output arguments: %d expected.\n", 3);
+		return STATUS_ERROR;
+	}
+
+	// in[0] : pointer
 	if (scilab_isPointer(env, in[0]) == 0)
 	{
 		Scierror(999, "Wrong type for input argument %d: A pointer expected.\n", 1);
-		*OK = -1;
-		return *OK;
+		return STATUS_ERROR;
 	}
-	scilab_getPointer(env, in[0], &hport);
+	scilab_getPointer(env, in[0], &hPort);
 
-	res = ClearCommError(*hport, &dwErrorFlags, &ComStat);
-
-	if (res == 0) {//error
-		*OK = -1;
-		return *OK;
+	if (!ClearCommError(hPort, &dwErrorFlags, &ComStat))
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999,"Failed to get port's status: %s\n", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
 	}
-	*nbread = ComStat.cbInQue;
-	*nbwrite = ComStat.cbOutQue;
+
+	nbread  = ComStat.cbInQue;
+	nbwrite = ComStat.cbOutQue;
+
+	//sciprint("Status port %p: in=%d out=%d\n", hPort, nbread, nbwrite);
 
 	// Create outputs
-	out[0] = scilab_createDouble(env, (double)*OK);
-	out[1] = scilab_createDouble(env, (double)*nbread);
-	out[2] = scilab_createDouble(env, (double)*nbwrite);
+	out[0] = scilab_createDouble(env, (double)0);
+	out[1] = scilab_createDouble(env, (double)nbread);
+	out[2] = scilab_createDouble(env, (double)nbwrite);
 
-	free(OK);
-	free(nbread);
-	free(nbwrite);
-	return 0;
+	return STATUS_OK;
 }
 
-//__declspec (dllexport) void __stdcall read_serial(int *handle,char buf[],int *size){
-int read_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out) {
-
-	DWORD dwBytesRead = 0;
-	int res;
-	void const** hport;
-	double size = 0;
+int read_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt, int nout, scilabVar* out)
+{
+	DWORD dwBytesRead;
+	void *hPort;
+	double in1;
+	DWORD size;
 	unsigned char buf[10];
+
+	(void)nopt;
+	(void)opt;
 
 	// Check number of input arguments
 	if (nin != 2)
@@ -306,13 +370,20 @@ int read_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 		return STATUS_ERROR;
 	}
 
-	// in[0] : pointer 
+	// Check the number of output arguments
+	if (nout != 1)
+	{
+		Scierror(77, "Wrong number of output arguments: %d expected.\n", 1);
+		return STATUS_ERROR;
+	}
+
+	// in[0] : pointer
 	if (scilab_isPointer(env, in[0]) == 0)
 	{
 		Scierror(999, "Wrong type for input argument #%d: A pointer expected.\n", 1);
 		return STATUS_ERROR;
 	}
-	scilab_getPointer(env, in[0], &hport);
+	scilab_getPointer(env, in[0], &hPort);
 
 	// in[1] : double
 	if (scilab_isDouble(env, in[1]) == 0 || scilab_isScalar(env, in[1]) == 0)
@@ -320,26 +391,35 @@ int read_serial(scilabEnv env, int nin, scilabVar* in, int nopt, scilabOpt* opt,
 		Scierror(999,"Wrong type for input argument %d: A double expected.\n", 2);
 		return STATUS_ERROR;
 	}
-	scilab_getDouble(env, in[1], &size);
+	scilab_getDouble(env, in[1], &in1);
+	size = (DWORD)(in1 + 0.5);
 
-	// Read from serial
-	// setlocale(LC_ALL, "en_US.utf8");
-	res = ReadFile(*hport, buf, size, &dwBytesRead, NULL);
-	
+	if (!ReadFile(hPort, buf, size, &dwBytesRead, NULL))
+	{
+		char *lpMsg = GetLastErrorString();
+		Scierror(999,"Failed to read from port: %s\n", lpMsg);
+		LocalFree(lpMsg);
+		return STATUS_ERROR;
+	}
+
+	if (size != dwBytesRead)
+	{
+		Scierror(999,"Unexpected number of bytes read: expected %d but read %d", size, dwBytesRead);
+		return STATUS_ERROR;
+	}
+
+	//sciprint("Read %d bytes from port %p\n", size, hPort);
+
 	// Creating output as double
-	int inr1 = 1;
-	int inc1 = size;
-	double* out1 = NULL;
+	double* out1;
 
-	out[0] = scilab_createDoubleMatrix2d(env, inr1, inc1, 0);
+	out[0] = scilab_createDoubleMatrix2d(env, 1, size, 0);
 	scilab_getDoubleArray(env, out[0], &out1);
 
-	for (int i = 0; i < size; ++i)
+	for (unsigned i = 0; i < dwBytesRead; ++i)
 	{
 		out1[i] = (double)*(buf+i);
 	}
 
-
-	return 0;
-
+	return STATUS_OK;
 }

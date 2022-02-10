@@ -7,8 +7,10 @@ function builder_gw_c()
 
     if getos() == "Windows"
         gw_c_files = findfiles(gw_c_path, '*_win.c');
+        gw_c_flags = "/W3 /WX"
     else
         gw_c_files = findfiles(gw_c_path, '*_linux.c');
+        gw_c_flags = "-Wall -Wextra -Werror"
     end
 
     func = ['open_serial','open_serial','csci6';...
@@ -22,7 +24,8 @@ function builder_gw_c()
     gw_c_files, ..
     gw_c_path, ..
     "", ..
-    "");
+    "", ..
+    gw_c_flags);
 
 
 endfunction

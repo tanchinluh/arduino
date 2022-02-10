@@ -36,8 +36,8 @@ function [x, y, typ]=ARDUINO_SETUP(job, arg1, arg2)
         while %t do
   
             [ok,num_arduino,port_com,exprs]=scicos_getvalue('Arduino Setup parameters',..
-            [gettext('Identifier of Arduino card'),gettext('Serial com port number')],..
-            list('vec',1,'vec',1), ..
+            [gettext('Identifier of Arduino card'),gettext('Serial port')],..
+            list('vec',1,'str',1), ..
             exprs)
             mess=[];
 
@@ -50,14 +50,9 @@ function [x, y, typ]=ARDUINO_SETUP(job, arg1, arg2)
                 ok=%f;
             end
     
-            // Remove 
-//            if port_com > 9 then // 20191016-TCL: Removed restriction on 0 and 1 for linux compatible - consider to add back for windows.
-//                mess=[gettext("Serial port must not be greater than 9. Change in the pannel configuration / Port com ")];
-//                ok=%f;
-//            end 
-
             if ok then// Everything's ok
-                model.rpar=[num_arduino,port_com];
+                model.rpar=[num_arduino];
+                model.opar=list(port_com);
                 graphics.exprs = exprs;
                 x.model=model;
                 x.graphics = graphics;
@@ -75,8 +70,9 @@ function [x, y, typ]=ARDUINO_SETUP(job, arg1, arg2)
         model.dep_ut=[%f %f];
         model.in=[];
         num_arduino=1;
-        port_com=5;
-        model.rpar=[num_arduino,port_com]; //Digital Output number
+        port_com="COM5";
+        model.rpar=[num_arduino];
+        model.opar=list(port_com);
         x=standard_define([2 2],model,[],[]);
         x.graphics.in_implicit=[];
         x.graphics.style= msprintf(style, string(num_arduino), string(port_com))
