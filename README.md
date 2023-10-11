@@ -7,7 +7,7 @@ Arduino Communication through Serial
 
 ### Prerequisites
 
-1. Scilab 6.0.x or Scilab 6.1.x
+1. Scilab >= 2023.0.0
 
 ### Installing
 
@@ -48,6 +48,10 @@ arduino_Path is where this file is.
 
 ## Revisions
 
+### REVISION NOTES 1.9
+BUGS FIXED
+* Fixed issue of get_figure_handle removed in Scilab 2023.0.0
+
 ### REVISION NOTES 1.8
 BUGS FIXED
 * Fixed issue of extra figure popup when demo figure is on
@@ -82,12 +86,12 @@ NEW FEATURES
 
 ## Version
 
-This is the Revision 1.8 of arduino toolbox for Scilab 6.0.x
+This is the Revision 1.9 of arduino toolbox for Scilab >= 2023.0.0
 
 ## Authors
 
-This is the Revision 1.8 of arduino toolbox for Scilab 6.0.x
-Modified By Tan Chin Luh 
+This is the Revision 1.9 of arduino toolbox for Scilab >= 2023.0.0
+Modified By Tan Chi Luh 
 
 Original Works By Bruno JOFRET
 

@@ -4,8 +4,7 @@ function []=nicescope()
     list_fig=winsid();  // On récupere les numéros des figure
 
     for i=1:length(list_fig)
-        h=get_figure_handle(list_fig(i));
-        scf(h);
+        h=scf(list_fig(i));
         //En cas de simulation param_var
         if (h.tag=="todemux") then
             legendtxt=h.children(1).children(1).text; //sauvegarde de la légende
