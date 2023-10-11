@@ -2,6 +2,10 @@
 Arduino toolbox for Scilab
 ==========================
 
+v. 1.9 (2023-10-11) / stephane.mottelet@utc.fr
+BUGS FIXED
+* Fixed issue of get_figure_handle removed in Scilab 2023.0.0
+
 v. 1.8 (2020-02-16) / chinluh.tan@bytecode-asia.com
 BUGS FIXED
 * Fixed issue of extra figure popup when demo figure is on
